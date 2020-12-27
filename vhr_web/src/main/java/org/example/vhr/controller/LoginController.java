@@ -16,7 +16,7 @@ public class LoginController {
 
     @GetMapping("/dologin")
      public Result doLogin(String code,String username,String password){
-         return Result.success("s");
+         return Result.success("请求成果");
      }
      @GetMapping("/verifyCode")
      public void VerifyCode(HttpServletRequest request, HttpServletResponse resp) throws IOException {
