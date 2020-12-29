@@ -67,4 +67,7 @@ public class HrRoleService{
         return hrRoleMapper.updateByPrimaryKey(record);
     }
 
+    public List<Integer> getRids(Integer hrid){
+        return hrRoleMapper.getRids(hrid);
+    }
 }

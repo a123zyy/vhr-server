@@ -1,6 +1,7 @@
 package org.example.vhr.controller.until;
 
-public class ResponseMsg {
+
+public class ResultMsg {
     private int code;
     private String msg;
 
@@ -28,14 +29,15 @@ public class ResponseMsg {
                 '}';
     }
 
-    public ResponseMsg(int code, String msg) {
+    public ResultMsg(int code, String msg) {
         this.code = code;
         this.msg = msg;
     }
-    public ResponseMsg() {
+    public ResultMsg() {
     }
 
     //通用的错误码
-    public static ResponseMsg SUCCESS = new ResponseMsg(0, "success");
+    public static ResultMsg SUCCESS = new ResultMsg(0, "success");
+    public static ResultMsg equipment_occupy = new ResultMsg(10004,"您已在另一台设备登录，本次登录已下线!");
 
 }

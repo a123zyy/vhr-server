@@ -19,6 +19,7 @@ import java.util.Map;
 public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     @Autowired
     SessionRegistry sessionRegistry;
+    @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response){
         if (request.getMethod().equals("POST")){
             throw new AuthenticationServiceException("请求类型不对"+request.getMethod());

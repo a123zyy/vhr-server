@@ -67,4 +67,9 @@ public class HrService{
         return hrMapper.updateByPrimaryKey(record);
     }
 
+    public Hr findByUserName(String useranme){
+        return hrMapper.findByUserName(useranme);
+    }
+
+
 }

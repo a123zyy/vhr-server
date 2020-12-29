@@ -67,4 +67,8 @@ public class RoleService{
         return roleMapper.updateByPrimaryKey(record);
     }
 
+    public List<Role> findbyLikeRoleName(String roleNme){
+        return roleMapper.findbyLikeRoleName(roleNme);
+    };
+
 }
