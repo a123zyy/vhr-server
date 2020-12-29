@@ -42,13 +42,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      * 用户密码校验过滤器
      */
 
-   @Autowired
-    private AdminAuthenticationProcessingFilter adminAuthenticationProcessingFilter;
-
     @Autowired
-    public SecurityConfig(AdminAuthenticationProcessingFilter adminAuthenticationProcessingFilter) {
-        this.adminAuthenticationProcessingFilter = adminAuthenticationProcessingFilter;
-    }
+    private AdminAuthenticationProcessingFilter adminAuthenticationProcessingFilter;
 
     @Autowired
     HrService hrService;
@@ -87,7 +82,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         registry.anyRequest().authenticated();
         // 防止iframe 造成跨域
         registry.and().headers().frameOptions().disable();
-
         // 自定义过滤器认证用户名密码
         http.addFilterAt(adminAuthenticationProcessingFilter, UsernamePasswordAuthenticationFilter.class);
 
