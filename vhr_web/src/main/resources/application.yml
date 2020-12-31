@@ -7,7 +7,7 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/vhr?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
 mybatis:
-  mapper-locations: classpath:mapping/*.xml
+   mapper-locations: classpath:org.example.vhr/*.xml
 logging:
   level:
     org.example.vhr: debug

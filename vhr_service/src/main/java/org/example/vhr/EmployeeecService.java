@@ -6,65 +6,69 @@ import org.example.vhr.EmployeeecExample;
 import java.util.List;
 import org.example.vhr.Employeeec;
 import org.example.vhr.EmployeeecMapper;
+
 @Service
-public class EmployeeecService{
+public class EmployeeecService {
 
     @Resource
     private EmployeeecMapper employeeecMapper;
 
-    
+
     public long countByExample(EmployeeecExample example) {
         return employeeecMapper.countByExample(example);
     }
 
-    
+
     public int deleteByExample(EmployeeecExample example) {
         return employeeecMapper.deleteByExample(example);
     }
 
-    
+
     public int deleteByPrimaryKey(Integer id) {
         return employeeecMapper.deleteByPrimaryKey(id);
     }
 
-    
+
     public int insert(Employeeec record) {
         return employeeecMapper.insert(record);
     }
 
-    
+
     public int insertSelective(Employeeec record) {
         return employeeecMapper.insertSelective(record);
     }
 
-    
+
     public List<Employeeec> selectByExample(EmployeeecExample example) {
         return employeeecMapper.selectByExample(example);
     }
 
-    
+
     public Employeeec selectByPrimaryKey(Integer id) {
         return employeeecMapper.selectByPrimaryKey(id);
     }
 
-    
-    public int updateByExampleSelective(Employeeec record,EmployeeecExample example) {
-        return employeeecMapper.updateByExampleSelective(record,example);
+
+    public int updateByExampleSelective(Employeeec record, EmployeeecExample example) {
+        return employeeecMapper.updateByExampleSelective(record, example);
     }
 
-    
-    public int updateByExample(Employeeec record,EmployeeecExample example) {
-        return employeeecMapper.updateByExample(record,example);
+
+    public int updateByExample(Employeeec record, EmployeeecExample example) {
+        return employeeecMapper.updateByExample(record, example);
     }
 
-    
+
     public int updateByPrimaryKeySelective(Employeeec record) {
         return employeeecMapper.updateByPrimaryKeySelective(record);
     }
 
-    
+
     public int updateByPrimaryKey(Employeeec record) {
         return employeeecMapper.updateByPrimaryKey(record);
     }
 
 }
+
+
+

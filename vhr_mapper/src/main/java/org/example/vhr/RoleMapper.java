@@ -28,5 +28,5 @@ public interface RoleMapper {
 
     int updateByPrimaryKey(Role record);
 
-    List<Role> findbyLikeRoleName(@Param("RoleName") String RoleName);
+    List<Role> findbyLikeRoleName(@Param("roleNme") String roleNme);
 }

@@ -1,24 +1,13 @@
 package org.example.vhr.controller.config;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.vhr.Hr;
 import org.example.vhr.HrService;
-import org.example.vhr.controller.until.Result;
-import org.example.vhr.controller.until.ResultMsg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.AccountExpiredException;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.CredentialsExpiredException;
-import org.springframework.security.authentication.DisabledException;
-import org.springframework.security.authentication.LockedException;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.core.session.SessionRegistryImpl;
@@ -26,12 +15,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.session.ConcurrentSessionControlAuthenticationStrategy;
-import org.springframework.security.web.session.ConcurrentSessionFilter;
-import org.springframework.stereotype.Service;
-
-import javax.servlet.http.HttpServletResponse;
-import java.io.PrintWriter;
-import java.util.logging.ErrorManager;
 
 @EnableWebSecurity
 @Configuration
@@ -42,11 +25,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      * 用户密码校验过滤器
      */
 
-    @Autowired
     private AdminAuthenticationProcessingFilter adminAuthenticationProcessingFilter;
 
-    @Autowired
-    HrService hrService;
+    public SecurityConfig(AdminAuthenticationProcessingFilter adminAuthenticationProcessingFilter) {
+        this.adminAuthenticationProcessingFilter = adminAuthenticationProcessingFilter;
+    }
 
     @Bean
     LoginFilter loginFilter() throws Exception {
@@ -83,7 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // 防止iframe 造成跨域
         registry.and().headers().frameOptions().disable();
         // 自定义过滤器认证用户名密码
-        http.addFilterAt(adminAuthenticationProcessingFilter, UsernamePasswordAuthenticationFilter.class);
+//        http.addFilterAt( UsernamePasswordAuthenticationFilter.class);
 
     }
 

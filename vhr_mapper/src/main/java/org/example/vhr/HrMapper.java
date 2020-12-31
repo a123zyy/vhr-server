@@ -1,7 +1,6 @@
 package org.example.vhr;
 
 import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
 import org.example.vhr.Hr;
 import org.example.vhr.HrExample;
@@ -29,5 +28,5 @@ public interface HrMapper {
 
     int updateByPrimaryKey(Hr record);
 
-    Hr findByUserName(@Param("username") String username);
+    Hr findByUserName(@Param("useranme") String useranme);
 }
