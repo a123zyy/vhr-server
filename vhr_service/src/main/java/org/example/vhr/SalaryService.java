@@ -2,10 +2,7 @@ package org.example.vhr;
 
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
-import org.example.vhr.SalaryMapper;
 import java.util.List;
-import org.example.vhr.SalaryExample;
-import org.example.vhr.Salary;
 
 @Service
 public class SalaryService {
@@ -69,6 +66,7 @@ public class SalaryService {
     }
 
 }
+
 
 
 

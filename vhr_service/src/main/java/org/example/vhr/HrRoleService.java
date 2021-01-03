@@ -3,9 +3,6 @@ package org.example.vhr;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
-import org.example.vhr.HrRoleMapper;
-import org.example.vhr.HrRoleExample;
-import org.example.vhr.HrRole;
 
 @Service
 public class HrRoleService {
@@ -72,6 +69,7 @@ public class HrRoleService {
         return hrRoleMapper.getRids(hrid);
     }
 }
+
 
 
 

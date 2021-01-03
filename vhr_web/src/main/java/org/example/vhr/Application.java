@@ -10,7 +10,7 @@ import org.springframework.context.annotation.ComponentScans;
 
 @SpringBootApplication
 @MapperScan("org.example.vhr")
-@ComponentScan(basePackages = {"org.example.vhr.controller.config"})
+//@ComponentScan(basePackages = {"org.example.vhr.controller.config"})
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);

@@ -297,4 +297,7 @@
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <select id="findByUserName" resultMap="BaseResultMap">
+      select * from hr where username = #{username,jdbcType=VARCHAR}
+    </select>
 </mapper>

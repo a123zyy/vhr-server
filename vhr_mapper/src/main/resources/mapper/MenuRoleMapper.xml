@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.example.vhr.RoleMapper">
-  <resultMap id="BaseResultMap" type="org.example.vhr.Role">
+<mapper namespace="org.example.vhr.MenuRoleMapper">
+  <resultMap id="BaseResultMap" type="org.example.vhr.MenuRole">
     <!--@mbg.generated-->
-    <!--@Table `role`-->
+    <!--@Table menu_role-->
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="nameZh" jdbcType="VARCHAR" property="namezh" />
+    <result column="mid" jdbcType="INTEGER" property="mid" />
+    <result column="rid" jdbcType="INTEGER" property="rid" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--@mbg.generated-->
@@ -70,16 +70,16 @@
   </sql>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, `name`, nameZh
+    id, mid, rid
   </sql>
-  <select id="selectByExample" parameterType="org.example.vhr.RoleExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="org.example.vhr.MenuRoleExample" resultMap="BaseResultMap">
     <!--@mbg.generated-->
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from `role`
+    from menu_role
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -91,65 +91,65 @@
     <!--@mbg.generated-->
     select 
     <include refid="Base_Column_List" />
-    from `role`
+    from menu_role
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--@mbg.generated-->
-    delete from `role`
+    delete from menu_role
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="org.example.vhr.RoleExample">
+  <delete id="deleteByExample" parameterType="org.example.vhr.MenuRoleExample">
     <!--@mbg.generated-->
-    delete from `role`
+    delete from menu_role
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.example.vhr.Role" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.example.vhr.MenuRole" useGeneratedKeys="true">
     <!--@mbg.generated-->
-    insert into `role` (`name`, nameZh)
-    values (#{name,jdbcType=VARCHAR}, #{namezh,jdbcType=VARCHAR})
+    insert into menu_role (mid, rid)
+    values (#{mid,jdbcType=INTEGER}, #{rid,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.example.vhr.Role" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.example.vhr.MenuRole" useGeneratedKeys="true">
     <!--@mbg.generated-->
-    insert into `role`
+    insert into menu_role
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="name != null">
-        `name`,
+      <if test="mid != null">
+        mid,
       </if>
-      <if test="namezh != null">
-        nameZh,
+      <if test="rid != null">
+        rid,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
+      <if test="mid != null">
+        #{mid,jdbcType=INTEGER},
       </if>
-      <if test="namezh != null">
-        #{namezh,jdbcType=VARCHAR},
+      <if test="rid != null">
+        #{rid,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="org.example.vhr.RoleExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="org.example.vhr.MenuRoleExample" resultType="java.lang.Long">
     <!--@mbg.generated-->
-    select count(*) from `role`
+    select count(*) from menu_role
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
     <!--@mbg.generated-->
-    update `role`
+    update menu_role
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.name != null">
-        `name` = #{record.name,jdbcType=VARCHAR},
+      <if test="record.mid != null">
+        mid = #{record.mid,jdbcType=INTEGER},
       </if>
-      <if test="record.namezh != null">
-        nameZh = #{record.namezh,jdbcType=VARCHAR},
+      <if test="record.rid != null">
+        rid = #{record.rid,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -158,32 +158,41 @@
   </update>
   <update id="updateByExample" parameterType="map">
     <!--@mbg.generated-->
-    update `role`
+    update menu_role
     set id = #{record.id,jdbcType=INTEGER},
-      `name` = #{record.name,jdbcType=VARCHAR},
-      nameZh = #{record.namezh,jdbcType=VARCHAR}
+      mid = #{record.mid,jdbcType=INTEGER},
+      rid = #{record.rid,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="org.example.vhr.Role">
+  <update id="updateByPrimaryKeySelective" parameterType="org.example.vhr.MenuRole">
     <!--@mbg.generated-->
-    update `role`
+    update menu_role
     <set>
-      <if test="name != null">
-        `name` = #{name,jdbcType=VARCHAR},
+      <if test="mid != null">
+        mid = #{mid,jdbcType=INTEGER},
       </if>
-      <if test="namezh != null">
-        nameZh = #{namezh,jdbcType=VARCHAR},
+      <if test="rid != null">
+        rid = #{rid,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.example.vhr.Role">
+  <update id="updateByPrimaryKey" parameterType="org.example.vhr.MenuRole">
     <!--@mbg.generated-->
-    update `role`
-    set `name` = #{name,jdbcType=VARCHAR},
-      nameZh = #{namezh,jdbcType=VARCHAR}
+    update menu_role
+    set mid = #{mid,jdbcType=INTEGER},
+      rid = #{rid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="findRoIDsByMenuIDs" resultType="java.lang.Integer">
+    SELECT
+     mid
+    from menu_role
+    WHERE rid IN
+    <foreach collection="param1" item="id" index="index" open="(" close=")" separator=",">
+      #{id,javaType=INTEGER}
+    </foreach>
+  </select>
 </mapper>

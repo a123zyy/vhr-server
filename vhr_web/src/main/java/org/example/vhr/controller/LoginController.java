@@ -5,6 +5,7 @@ import org.example.vhr.Hr;
 import org.example.vhr.HrService;
 import org.example.vhr.RoleService;
 import org.example.vhr.controller.ControllerRequest.HrRequest;
+import org.example.vhr.controller.until.JwtTokenUtil;
 import org.example.vhr.controller.until.Result;
 import org.example.vhr.controller.until.ResultMsg;
 import org.example.vhr.controller.until.VerificationCode;
@@ -41,9 +42,11 @@ public class LoginController {
     public HrService hrService;
     @Autowired
     public RoleService roleService;
-
     @Autowired
-    SessionRegistry sessionRegistry;
+    private JwtTokenUtil jwtTokenUtil;
+
+//    @Autowired
+//    SessionRegistry sessionRegistry;
 
     @GetMapping("/test")
     public String getTest() {
@@ -61,8 +64,9 @@ public class LoginController {
             HrRequest hrRequest = new HrRequest();
             BeanUtils.copyProperties(hr,hrRequest);
             hrRequest.setRoles(roleService.findbyLikeRoleName(hrRequest.getUsername()));
-            sessionRegistry.registerNewSession(hr.getId()+"",hrRequest);
+//            sessionRegistry.registerNewSession(hr.getId()+"",hrRequest);
             //查权限
+            hrRequest.setToken(jwtTokenUtil.generateToken(hr));
             return Result.success(hrRequest);
 
         }

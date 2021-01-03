@@ -15,5 +15,6 @@ public class HrRequest extends Hr {
     private String password;
 
     private List<Role> roles;
+    private String token;
 
 }

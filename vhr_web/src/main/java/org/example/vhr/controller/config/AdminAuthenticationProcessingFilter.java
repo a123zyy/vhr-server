@@ -25,7 +25,6 @@ import javax.servlet.http.HttpServletResponse;
  * @author zyy
  */ //自定义密码校验过滤器
 @Slf4j
-@Component
 public class AdminAuthenticationProcessingFilter extends AbstractAuthenticationProcessingFilter {
 
     /**

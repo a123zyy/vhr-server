@@ -3,9 +3,6 @@ package org.example.vhr;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
-import org.example.vhr.MsgcontentMapper;
-import org.example.vhr.Msgcontent;
-import org.example.vhr.MsgcontentExample;
 
 @Service
 public class MsgcontentService {
@@ -69,6 +66,7 @@ public class MsgcontentService {
     }
 
 }
+
 
 
 

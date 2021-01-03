@@ -6,11 +6,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 public class SpringbootTest {
-//    @Autowired
-//    private DepartmentService departmentService;
-//    @Test
-//    public void getparamer(){
-//        System.out.println(departmentService.selectByPrimaryKey(1).getName());
-//
-//    }
+
+    @Autowired
+    private HrService hrService;
+
+    @Test
+    public void getparamer(){
+        System.out.println(hrService.selectByPrimaryKey(3));
+
+    }
 }

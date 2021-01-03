@@ -2,10 +2,7 @@ package org.example.vhr;
 
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
-import org.example.vhr.AppraiseExample;
 import java.util.List;
-import org.example.vhr.AppraiseMapper;
-import org.example.vhr.Appraise;
 
 @Service
 public class AppraiseService {
@@ -69,6 +66,7 @@ public class AppraiseService {
     }
 
 }
+
 
 
 

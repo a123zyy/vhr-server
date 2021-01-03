@@ -20,7 +20,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public SecurityUser loadUserByUsername(String username) throws UsernameNotFoundException {
         // 从数据库中取出用户信息
-        Hr hr = hrService.findByUserName(username);
+        Hr hr = new Hr();
         // 判断用户是否存在
         if (ObjectUtils.isEmpty(hr)){
             throw new UsernameNotFoundException("用户名不存在！");

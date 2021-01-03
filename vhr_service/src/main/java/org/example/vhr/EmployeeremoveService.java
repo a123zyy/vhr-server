@@ -3,9 +3,6 @@ package org.example.vhr;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
-import org.example.vhr.Employeeremove;
-import org.example.vhr.EmployeeremoveMapper;
-import org.example.vhr.EmployeeremoveExample;
 
 @Service
 public class EmployeeremoveService {
@@ -69,6 +66,7 @@ public class EmployeeremoveService {
     }
 
 }
+
 
 
 

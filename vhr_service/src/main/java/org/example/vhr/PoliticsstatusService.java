@@ -3,9 +3,6 @@ package org.example.vhr;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
-import org.example.vhr.Politicsstatus;
-import org.example.vhr.PoliticsstatusMapper;
-import org.example.vhr.PoliticsstatusExample;
 
 @Service
 public class PoliticsstatusService {
@@ -69,6 +66,7 @@ public class PoliticsstatusService {
     }
 
 }
+
 
 
 

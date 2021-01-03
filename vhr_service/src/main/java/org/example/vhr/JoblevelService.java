@@ -3,9 +3,6 @@ package org.example.vhr;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
-import org.example.vhr.JoblevelMapper;
-import org.example.vhr.JoblevelExample;
-import org.example.vhr.Joblevel;
 
 @Service
 public class JoblevelService {
@@ -69,6 +66,7 @@ public class JoblevelService {
     }
 
 }
+
 
 
 

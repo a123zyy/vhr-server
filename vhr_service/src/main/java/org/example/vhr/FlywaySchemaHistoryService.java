@@ -3,9 +3,6 @@ package org.example.vhr;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
-import org.example.vhr.FlywaySchemaHistoryMapper;
-import org.example.vhr.FlywaySchemaHistoryExample;
-import org.example.vhr.FlywaySchemaHistory;
 
 @Service
 public class FlywaySchemaHistoryService {
@@ -69,6 +66,7 @@ public class FlywaySchemaHistoryService {
     }
 
 }
+
 
 
 

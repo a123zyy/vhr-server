@@ -2,10 +2,7 @@ package org.example.vhr;
 
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
-import org.example.vhr.NationMapper;
 import java.util.List;
-import org.example.vhr.Nation;
-import org.example.vhr.NationExample;
 
 @Service
 public class NationService {
@@ -69,6 +66,7 @@ public class NationService {
     }
 
 }
+
 
 
 

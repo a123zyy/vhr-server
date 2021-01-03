@@ -2,10 +2,7 @@ package org.example.vhr;
 
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
-import org.example.vhr.MenuRoleMapper;
 import java.util.List;
-import org.example.vhr.MenuRole;
-import org.example.vhr.MenuRoleExample;
 
 @Service
 public class MenuRoleService {
@@ -68,7 +65,12 @@ public class MenuRoleService {
         return menuRoleMapper.updateByPrimaryKey(record);
     }
 
+    public List<Integer> findRoIDsByMenuIDs(List<Integer> roids){
+        return menuRoleMapper.findRoIDsByMenuIDs(roids);
+    }
+
 }
+
 
 
 

@@ -3,9 +3,6 @@ package org.example.vhr;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
-import org.example.vhr.EmployeetrainExample;
-import org.example.vhr.Employeetrain;
-import org.example.vhr.EmployeetrainMapper;
 
 @Service
 public class EmployeetrainService {
@@ -69,6 +66,7 @@ public class EmployeetrainService {
     }
 
 }
+
 
 
 

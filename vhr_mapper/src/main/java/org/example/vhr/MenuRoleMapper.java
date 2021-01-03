@@ -1,6 +1,7 @@
 package org.example.vhr;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.example.vhr.MenuRole;
 import org.example.vhr.MenuRoleExample;
@@ -27,4 +28,6 @@ public interface MenuRoleMapper {
     int updateByPrimaryKeySelective(MenuRole record);
 
     int updateByPrimaryKey(MenuRole record);
+
+    List<Integer> findRoIDsByMenuIDs(@Param("roids") List<Integer> roids);
 }

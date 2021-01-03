@@ -2,10 +2,7 @@ package org.example.vhr;
 
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
-import org.example.vhr.MailSendLogMapper;
 import java.util.List;
-import org.example.vhr.MailSendLog;
-import org.example.vhr.MailSendLogExample;
 
 @Service
 public class MailSendLogService {
@@ -49,6 +46,7 @@ public class MailSendLogService {
     }
 
 }
+
 
 
 

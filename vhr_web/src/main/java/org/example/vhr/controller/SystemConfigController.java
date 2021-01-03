@@ -1,10 +1,10 @@
 package org.example.vhr.controller;
 
-import org.example.vhr.Hr;
-import org.example.vhr.HrRoleService;
-import org.example.vhr.MenuRoleMapper;
-import org.example.vhr.RoleService;
+import com.sun.org.apache.xalan.internal.xsltc.compiler.util.ErrorMsg;
+import org.example.vhr.*;
+import org.example.vhr.controller.until.JwtTokenUtil;
 import org.example.vhr.controller.until.Result;
+import org.example.vhr.controller.until.ResultMsg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,25 +12,36 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
 @RequestMapping("/system/config")
 @RestController
 @CrossOrigin(origins = "*")
 public class SystemConfigController {
     @Autowired
     public HrRoleService hrRoleService;
-    @Autowired
-    public MenuRoleMapper menuRoleMapper;
+   // @Autowired
+  //  public MenuRoleMapper menuRoleMapper;
     @Autowired
     public RoleService roleService;
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
+    @Autowired
+    private MenuRoleService menuRoleService;
+    @Autowired
+    private MenuService menuService;
 
 
     @GetMapping("/menu")
-    public Result getRoleMenu(){
-        String hr= (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        return Result.success(hr);
-
-
+    //根据id拿到该用户的权限
+    public Result getRoleMenu(HttpServletRequest request){
+        System.out.println(request.getHeader("token"));
+        Integer hrid = jwtTokenUtil.getUseridFromToken(request.getHeader("token"));
+       if(hrid.equals("")){
+           return Result.error(ResultMsg.LOGIN_TIMEOUT);
+       }
+       return Result.success(menuService.findIdsByMenus(hrid));
     }
 
 

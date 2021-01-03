@@ -1,11 +1,9 @@
 package org.example.vhr;
 
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
-import org.example.vhr.MenuMapper;
 import java.util.List;
-import org.example.vhr.Menu;
-import org.example.vhr.MenuExample;
 
 @Service
 public class MenuService {
@@ -68,7 +66,12 @@ public class MenuService {
         return menuMapper.updateByPrimaryKey(record);
     }
 
+    public List<Menu> findIdsByMenus(int hrId){
+        return menuMapper.findIdsByMenus(hrId);
+
+    }
 }
+
 
 
 

@@ -2,10 +2,8 @@ package org.example.vhr;
 
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
-import org.example.vhr.RoleMapper;
-import org.example.vhr.Role;
+
 import java.util.List;
-import org.example.vhr.RoleExample;
 
 @Service
 public class RoleService {
@@ -70,11 +68,10 @@ public class RoleService {
 
     public List<Role> findbyLikeRoleName(String roleNme) {
         return roleMapper.findbyLikeRoleName(roleNme);
-    }
-
-    ;
+    };
 
 }
+
 
 
 

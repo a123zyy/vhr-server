@@ -2,10 +2,7 @@ package org.example.vhr;
 
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
-import org.example.vhr.SysmsgMapper;
 import java.util.List;
-import org.example.vhr.SysmsgExample;
-import org.example.vhr.Sysmsg;
 
 @Service
 public class SysmsgService {
@@ -69,6 +66,7 @@ public class SysmsgService {
     }
 
 }
+
 
 
 

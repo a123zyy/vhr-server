@@ -3,9 +3,6 @@ package org.example.vhr;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
-import org.example.vhr.HrMapper;
-import org.example.vhr.HrExample;
-import org.example.vhr.Hr;
 
 @Service
 public class HrService {
@@ -74,6 +71,7 @@ public class HrService {
 
 
 }
+
 
 
 

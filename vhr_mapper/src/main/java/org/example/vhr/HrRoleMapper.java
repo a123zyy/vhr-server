@@ -1,6 +1,7 @@
 package org.example.vhr;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.example.vhr.HrRole;
 import org.example.vhr.HrRoleExample;
@@ -28,5 +29,5 @@ public interface HrRoleMapper {
 
     int updateByPrimaryKey(HrRole record);
 
-    List<Integer> getRids(Integer hrid);
+    List<Integer> getRids(@Param("hrid") int hrid);
 }

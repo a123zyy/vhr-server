@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.example.vhr.HrRoleMapper">
-  <resultMap id="BaseResultMap" type="org.example.vhr.HrRole">
+<mapper namespace="org.example.vhr.RoleMapper">
+  <resultMap id="BaseResultMap" type="org.example.vhr.Role">
     <!--@mbg.generated-->
-    <!--@Table hr_role-->
+    <!--@Table `role`-->
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="hrid" jdbcType="INTEGER" property="hrid" />
-    <result column="rid" jdbcType="INTEGER" property="rid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="nameZh" jdbcType="VARCHAR" property="namezh" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--@mbg.generated-->
@@ -70,16 +70,16 @@
   </sql>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, hrid, rid
+    id, `name`, nameZh
   </sql>
-  <select id="selectByExample" parameterType="org.example.vhr.HrRoleExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="org.example.vhr.RoleExample" resultMap="BaseResultMap">
     <!--@mbg.generated-->
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from hr_role
+    from `role`
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -91,65 +91,65 @@
     <!--@mbg.generated-->
     select 
     <include refid="Base_Column_List" />
-    from hr_role
+    from `role`
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--@mbg.generated-->
-    delete from hr_role
+    delete from `role`
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="org.example.vhr.HrRoleExample">
+  <delete id="deleteByExample" parameterType="org.example.vhr.RoleExample">
     <!--@mbg.generated-->
-    delete from hr_role
+    delete from `role`
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.example.vhr.HrRole" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.example.vhr.Role" useGeneratedKeys="true">
     <!--@mbg.generated-->
-    insert into hr_role (hrid, rid)
-    values (#{hrid,jdbcType=INTEGER}, #{rid,jdbcType=INTEGER})
+    insert into `role` (`name`, nameZh)
+    values (#{name,jdbcType=VARCHAR}, #{namezh,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.example.vhr.HrRole" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.example.vhr.Role" useGeneratedKeys="true">
     <!--@mbg.generated-->
-    insert into hr_role
+    insert into `role`
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="hrid != null">
-        hrid,
+      <if test="name != null">
+        `name`,
       </if>
-      <if test="rid != null">
-        rid,
+      <if test="namezh != null">
+        nameZh,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="hrid != null">
-        #{hrid,jdbcType=INTEGER},
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
       </if>
-      <if test="rid != null">
-        #{rid,jdbcType=INTEGER},
+      <if test="namezh != null">
+        #{namezh,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="org.example.vhr.HrRoleExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="org.example.vhr.RoleExample" resultType="java.lang.Long">
     <!--@mbg.generated-->
-    select count(*) from hr_role
+    select count(*) from `role`
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
     <!--@mbg.generated-->
-    update hr_role
+    update `role`
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.hrid != null">
-        hrid = #{record.hrid,jdbcType=INTEGER},
+      <if test="record.name != null">
+        `name` = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.rid != null">
-        rid = #{record.rid,jdbcType=INTEGER},
+      <if test="record.namezh != null">
+        nameZh = #{record.namezh,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -158,32 +158,35 @@
   </update>
   <update id="updateByExample" parameterType="map">
     <!--@mbg.generated-->
-    update hr_role
+    update `role`
     set id = #{record.id,jdbcType=INTEGER},
-      hrid = #{record.hrid,jdbcType=INTEGER},
-      rid = #{record.rid,jdbcType=INTEGER}
+      `name` = #{record.name,jdbcType=VARCHAR},
+      nameZh = #{record.namezh,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="org.example.vhr.HrRole">
+  <update id="updateByPrimaryKeySelective" parameterType="org.example.vhr.Role">
     <!--@mbg.generated-->
-    update hr_role
+    update `role`
     <set>
-      <if test="hrid != null">
-        hrid = #{hrid,jdbcType=INTEGER},
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="rid != null">
-        rid = #{rid,jdbcType=INTEGER},
+      <if test="namezh != null">
+        nameZh = #{namezh,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.example.vhr.HrRole">
+  <update id="updateByPrimaryKey" parameterType="org.example.vhr.Role">
     <!--@mbg.generated-->
-    update hr_role
-    set hrid = #{hrid,jdbcType=INTEGER},
-      rid = #{rid,jdbcType=INTEGER}
+    update `role`
+    set `name` = #{name,jdbcType=VARCHAR},
+      nameZh = #{namezh,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <select id="findbyLikeRoleName" resultMap="BaseResultMap">
+      select * from `role` where name like concat('%',#{roleNme},'%')
+    </select>
 </mapper>

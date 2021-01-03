@@ -14,6 +14,27 @@
     <result column="requireAuth" jdbcType="BOOLEAN" property="requireauth" />
     <result column="parentId" jdbcType="INTEGER" property="parentid" />
     <result column="enabled" jdbcType="BOOLEAN" property="enabled" />
+    <association property="meta" javaType="org.example.vhr.meta">
+      <result column="keepAlive" property="keepAlive" jdbcType="BIT" />
+      <result column="requireAuth" property="requireAuth" jdbcType="BIT" />
+    </association>
+  </resultMap>
+  <resultMap id="Menu2" type="org.example.vhr.Menu" extends="BaseResultMap">
+    <collection property="children" ofType="org.example.vhr.Menu">
+      <id column="id2" property="id" jdbcType="INTEGER" />
+      <result column="url2" property="url" jdbcType="VARCHAR" />
+      <result column="path2" property="path" jdbcType="VARCHAR" />
+      <result column="component2" property="component" jdbcType="VARCHAR" />
+      <result column="name2" property="name" jdbcType="VARCHAR" />
+      <result column="iconCls2" property="iconcls" jdbcType="VARCHAR" />
+      <result column="parentId2" property="parentid" jdbcType="INTEGER" />
+      <result column="enabled2" property="enabled" jdbcType="BIT" />
+      <association property="meta" javaType="org.example.vhr.meta">
+        <result column="keepAlive2" property="keepAlive" jdbcType="BIT" />
+        <result column="requireAuth2" property="requireAuth" jdbcType="BIT" />
+      </association>
+    </collection>
+
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--@mbg.generated-->
@@ -297,4 +318,8 @@
       enabled = #{enabled,jdbcType=BOOLEAN}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <select id="findIdsByMenus" resultMap="Menu2">
+    SELECT distinct m1.*,m2.`id` as id2,m2.`component` as component2,m2.`enabled` as enabled2,m2.`iconCls` as iconCls2,m2.`keepAlive` as keepAlive2,m2.`name` as name2,m2.`parentId` as parentId2,m2.`requireAuth` as requireAuth2,m2.`path` as path2
+FROM menu m1,(SELECT * FROM menu WHERE id IN(SELECT mid FROM menu_role WHERE rid IN(SELECT rid FROM hr_role WHERE hrid = #{hrId}))) m2 WHERE m2.parentId = m1.id
+    </select>
 </mapper>
