@@ -26,17 +26,14 @@ public class SalaryController {
 
     @GetMapping("/")
     public Result getAllSalary(){
-        SalaryExample example = new SalaryExample();
-        return Result.success(salaryService.selectByExample(example));
+        return Result.success(salaryService.selectByExample(new SalaryExample()));
     }
     @PatchMapping("/")
     public Result addSalary(@RequestBody Salary salary){
-        salary.setCreateDate(new Date());
         return Result.success(salaryService.insert(salary));
     }
     @PutMapping("/")
     public Result updateSalary(@RequestBody Salary salary){
-        salary.setCreateDate(new Date());
         return Result.success(salaryService.updateByPrimaryKey(salary));
     }
     @DeleteMapping("/{id}")

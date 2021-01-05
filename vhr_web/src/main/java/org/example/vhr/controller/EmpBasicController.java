@@ -40,7 +40,7 @@ public class EmpBasicController {
     @PostMapping("/")
     public Result getEmpBasic(@RequestBody EmployeeRequest employeeRequest){
         EmployeeExample employeeExample = new EmployeeExample();
-        employeeExample.setOrderByClause("conversionTime");
+        employeeExample.setOrderByClause("");
         PageHelper.startPage(employeeRequest.getPageNo(),employeeRequest.getPageSize(),true);
         PageInfo<Employee> pageInfo = new PageInfo<Employee>(employeeService.selectByExample(employeeExample));
         employeeRequest.setData(pageInfo.getList().stream().map(this::getEmployee).collect(Collectors.toList()));
@@ -69,9 +69,7 @@ public class EmpBasicController {
             if (Objects.nonNull(request.getPosition())){
                 positionService.updateByPrimaryKey(request.getPosition());
             }
-            Employee employee = new Employee();
-            BeanUtils.copyProperties(request,employee);
-            employeeService.insert(employee);
+            employeeService.insert(request);
         } catch (Exception e){
             new Error();
         }
@@ -98,9 +96,7 @@ public class EmpBasicController {
             if (Objects.nonNull(request.getPosition())){
                 positionService.updateByPrimaryKey(request.getPosition());
             }
-            Employee employee = new Employee();
-            BeanUtils.copyProperties(request,employee);
-            employeeService.updateByPrimaryKey(employee);
+            employeeService.updateByPrimaryKey(request);
         } catch (Exception e){
             new Error();
         }
@@ -113,26 +109,22 @@ public class EmpBasicController {
 
     @GetMapping("/nations")
     public Result getNations(){
-        NationExample nationExample = new NationExample();
-      return Result.success(nationService.selectByExample(nationExample));
+      return Result.success(nationService.selectByExample(new NationExample()));
     }
     //党派
     @GetMapping("/politicsstatus")
     public Result getPoliticsstatus(){
-        PoliticsstatusExample politicsstatusExample = new PoliticsstatusExample();
-        return Result.success(politicsstatusService.selectByExample(politicsstatusExample));
+        return Result.success(politicsstatusService.selectByExample( new PoliticsstatusExample()));
     }
     //职位
     @GetMapping("/positions")
     public Result getpositions(){
-        PositionExample positionExample = new PositionExample();
-        return Result.success(positionService.selectByExample(positionExample));
+        return Result.success(positionService.selectByExample(new PositionExample()));
     }
     //职称
     @GetMapping("/joblevels")
     public Result getjoblevels(){
-        JoblevelExample joblevelExample = new JoblevelExample();
-        return Result.success(joblevelService.selectByExample(joblevelExample));
+        return Result.success(joblevelService.selectByExample(new JoblevelExample()));
     }
     //部门
 

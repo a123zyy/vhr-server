@@ -58,7 +58,6 @@ public class LoginController {
      public Result doLogin(String code,String username,String password){
         //验证code
         Hr hr = hrService.findByUserName(username);
-        System.out.println(hr.getPassword());
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         if (encoder.matches(password,hr.getPassword())){
             HrRequest hrRequest = new HrRequest();
@@ -68,7 +67,6 @@ public class LoginController {
             //查权限
             hrRequest.setToken(jwtTokenUtil.generateToken(hr));
             return Result.success(hrRequest);
-
         }
         return Result.error(ResultMsg.equipment_occupy);
 

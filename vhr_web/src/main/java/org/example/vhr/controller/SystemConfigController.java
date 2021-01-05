@@ -21,14 +21,10 @@ import java.util.List;
 public class SystemConfigController {
     @Autowired
     public HrRoleService hrRoleService;
-   // @Autowired
-  //  public MenuRoleMapper menuRoleMapper;
     @Autowired
     public RoleService roleService;
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
-    @Autowired
-    private MenuRoleService menuRoleService;
     @Autowired
     private MenuService menuService;
 
@@ -36,7 +32,6 @@ public class SystemConfigController {
     @GetMapping("/menu")
     //根据id拿到该用户的权限
     public Result getRoleMenu(HttpServletRequest request){
-        System.out.println(request.getHeader("token"));
         Integer hrid = jwtTokenUtil.getUseridFromToken(request.getHeader("token"));
        if(hrid.equals("")){
            return Result.error(ResultMsg.LOGIN_TIMEOUT);
