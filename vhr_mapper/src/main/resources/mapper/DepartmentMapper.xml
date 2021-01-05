@@ -233,4 +233,10 @@
       isParent = #{isparent,jdbcType=BOOLEAN}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <select id="selectByParentId" resultMap="BaseResultMap">
+       select * FROM department where parentId = #{parentId,jdbcType=INTEGER}
+    </select>
+    <select id="findAll" resultMap="BaseResultMap">
+        select * FROM department
+    </select>
 </mapper>

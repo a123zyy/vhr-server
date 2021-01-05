@@ -4,6 +4,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.util.List;
+
 @ApiModel(value = "org-example-vhr-Department")
 @Data
 public class Department {
@@ -27,4 +29,6 @@ public class Department {
 
     @ApiModelProperty(value = "")
     private Boolean isparent;
+
+    private List<Department> children;
 }

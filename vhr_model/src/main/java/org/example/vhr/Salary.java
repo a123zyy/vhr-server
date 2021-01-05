@@ -1,88 +1,81 @@
 package org.example.vhr;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-@ApiModel(value = "org-example-vhr-Salary")
 @Data
 public class Salary {
-    @ApiModelProperty(value = "")
+    /**
+     *
+     */
     private Integer id;
 
     /**
      * 基本工资
      */
-    @ApiModelProperty(value = "基本工资")
-    private Integer basicsalary;
+    private Integer basicSalary;
 
     /**
      * 奖金
      */
-    @ApiModelProperty(value = "奖金")
     private Integer bonus;
 
     /**
      * 午餐补助
      */
-    @ApiModelProperty(value = "午餐补助")
-    private Integer lunchsalary;
+    private Integer lunchSalary;
 
     /**
      * 交通补助
      */
-    @ApiModelProperty(value = "交通补助")
-    private Integer trafficsalary;
+    private Integer trafficSalary;
 
     /**
      * 应发工资
      */
-    @ApiModelProperty(value = "应发工资")
-    private Integer allsalary;
+    private Integer allSalary;
 
     /**
      * 养老金基数
      */
-    @ApiModelProperty(value = "养老金基数")
-    private Integer pensionbase;
+    private Integer pensionBase;
 
     /**
      * 养老金比率
      */
-    @ApiModelProperty(value = "养老金比率")
-    private Double pensionper;
+    private Double pensionPer;
 
     /**
      * 启用时间
      */
-    @ApiModelProperty(value = "启用时间")
-    private Date createdate;
+    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+    private Date createDate;
 
     /**
      * 医疗基数
      */
-    @ApiModelProperty(value = "医疗基数")
-    private Integer medicalbase;
+    private Integer medicalBase;
 
     /**
      * 医疗保险比率
      */
-    @ApiModelProperty(value = "医疗保险比率")
-    private Double medicalper;
+    private Double medicalPer;
 
     /**
      * 公积金基数
      */
-    @ApiModelProperty(value = "公积金基数")
-    private Integer accumulationfundbase;
+    private Integer accumulationFundBase;
 
     /**
      * 公积金比率
      */
-    @ApiModelProperty(value = "公积金比率")
-    private Double accumulationfundper;
+    private Double accumulationFundPer;
 
-    @ApiModelProperty(value = "")
+    /**
+     *
+     */
     private String name;
 }
+

@@ -25,7 +25,6 @@ public class EmployeeService {
         return employeeMapper.deleteByPrimaryKey(id);
     }
 
-
     public int insert(Employee record) {
         return employeeMapper.insert(record);
     }
@@ -63,6 +62,10 @@ public class EmployeeService {
 
     public int updateByPrimaryKey(Employee record) {
         return employeeMapper.updateByPrimaryKey(record);
+    }
+
+    public int getMaxWorkID(){
+        return (employeeMapper.getMaxWorkID()+1);
     }
 
 }

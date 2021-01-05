@@ -1,6 +1,7 @@
 package org.example.vhr;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.example.vhr.Department;
 import org.example.vhr.DepartmentExample;
@@ -27,4 +28,9 @@ public interface DepartmentMapper {
     int updateByPrimaryKeySelective(Department record);
 
     int updateByPrimaryKey(Department record);
+
+    Department selectByParentId(@Param("parentId") Integer parentId);
+
+    List<Department> findAll();
+
 }

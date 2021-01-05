@@ -2,7 +2,11 @@ package org.example.vhr;
 
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class DepartmentService {
@@ -68,6 +72,19 @@ public class DepartmentService {
     public String findAll() {
         return departmentMapper.selectByPrimaryKey(1).getName();
     }
+
+    public List<Department> findAllByParendId() {
+         List<Department> departments = departmentMapper.findAll();
+       return departments.stream().peek(item->{
+            List<Department> children =  departments.stream()
+                    .filter(item2 ->item.getId().equals(item2.getParentid())).collect(Collectors.toList());
+            item.setChildren(children);
+        }).collect(Collectors.toList());
+
+    }
+
+
+
 
 }
 
