@@ -17,6 +17,8 @@ public interface DepartmentMapper {
 
     int insertSelective(Department record);
 
+    int addDep(@Param("record") Department record);
+
     List<Department> selectByExample(DepartmentExample example);
 
     Department selectByPrimaryKey(Integer id);
@@ -32,5 +34,6 @@ public interface DepartmentMapper {
     Department selectByParentId(@Param("parentId") Integer parentId);
 
     List<Department> findAll();
+
 
 }

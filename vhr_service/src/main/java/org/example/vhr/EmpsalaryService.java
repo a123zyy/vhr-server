@@ -3,6 +3,7 @@ package org.example.vhr;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class EmpsalaryService {
@@ -63,6 +64,16 @@ public class EmpsalaryService {
 
     public int updateByPrimaryKey(Empsalary record) {
         return empsalaryMapper.updateByPrimaryKey(record);
+    }
+
+    public Integer findSIDByEID(int eid){
+        if (Objects.nonNull(empsalaryMapper.findByEID(eid))){
+            return empsalaryMapper.findByEID(eid).getSid();
+        }
+       return 0;
+    }
+    public int intInsertUpdate(int eid,int sid){
+         return empsalaryMapper.updateByID(eid,sid);
     }
 
 }

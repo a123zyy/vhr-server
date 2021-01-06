@@ -1,6 +1,7 @@
 package org.example.vhr;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.example.vhr.Empsalary;
 import org.example.vhr.EmpsalaryExample;
@@ -27,4 +28,8 @@ public interface EmpsalaryMapper {
     int updateByPrimaryKeySelective(Empsalary record);
 
     int updateByPrimaryKey(Empsalary record);
+
+    Empsalary findByEID(@Param("eid") int eid);
+
+    int updateByID(@Param("eid") int eid, @Param("sid") int sid);
 }

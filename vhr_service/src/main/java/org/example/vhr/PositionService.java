@@ -22,7 +22,7 @@ public class PositionService {
 
 
     public int deleteByPrimaryKey(Integer id) {
-        return positionMapper.deleteByPrimaryKey(id);
+         return positionMapper.deleteByPrimaryKey(id);
     }
 
 
@@ -64,6 +64,10 @@ public class PositionService {
     public int updateByPrimaryKey(Position record) {
         return positionMapper.updateByPrimaryKey(record);
     }
+
+   public int deleteByIds(List<Integer> ids){
+        return positionMapper.deleteByIds(ids);
+   }
 
 }
 

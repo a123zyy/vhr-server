@@ -1,6 +1,7 @@
 package org.example.vhr;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.example.vhr.Position;
 import org.example.vhr.PositionExample;
@@ -27,4 +28,6 @@ public interface PositionMapper {
     int updateByPrimaryKeySelective(Position record);
 
     int updateByPrimaryKey(Position record);
+
+    int deleteByIds(@Param("ids") List<Integer> ids);
 }

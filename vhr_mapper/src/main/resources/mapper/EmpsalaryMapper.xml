@@ -186,4 +186,10 @@
       sid = #{sid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <select id="findByEID" resultMap="BaseResultMap">
+        select * from empsalary where eid = #{eid,jdbcType=INTEGER}
+    </select>
+    <insert id="updateByID">
+        REPLACE into empsalary(eid,sid) values(#{eid,jdbcType=INTEGER},#{sid,jdbcType=INTEGER})
+    </insert>
 </mapper>

@@ -6,8 +6,8 @@
     <!--@Table joblevel-->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="titleLevel" jdbcType="OTHER" property="titlelevel" />
-    <result column="createDate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="titleLevel" jdbcType="OTHER" property="titleLevel" />
+    <result column="createDate" jdbcType="TIMESTAMP" property="createDate" />
     <result column="enabled" jdbcType="BOOLEAN" property="enabled" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -112,7 +112,7 @@
     <!--@mbg.generated-->
     insert into joblevel (`name`, titleLevel, createDate, 
       enabled)
-    values (#{name,jdbcType=VARCHAR}, #{titlelevel,jdbcType=OTHER}, #{createdate,jdbcType=TIMESTAMP}, 
+    values (#{name,jdbcType=VARCHAR}, #{titleLevel,jdbcType=OTHER}, #{createDate,jdbcType=TIMESTAMP}, 
       #{enabled,jdbcType=BOOLEAN})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.example.vhr.Joblevel" useGeneratedKeys="true">
@@ -122,10 +122,10 @@
       <if test="name != null">
         `name`,
       </if>
-      <if test="titlelevel != null">
+      <if test="titleLevel != null">
         titleLevel,
       </if>
-      <if test="createdate != null">
+      <if test="createDate != null">
         createDate,
       </if>
       <if test="enabled != null">
@@ -136,11 +136,11 @@
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="titlelevel != null">
-        #{titlelevel,jdbcType=OTHER},
+      <if test="titleLevel != null">
+        #{titleLevel,jdbcType=OTHER},
       </if>
-      <if test="createdate != null">
-        #{createdate,jdbcType=TIMESTAMP},
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
       </if>
       <if test="enabled != null">
         #{enabled,jdbcType=BOOLEAN},
@@ -164,11 +164,11 @@
       <if test="record.name != null">
         `name` = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.titlelevel != null">
-        titleLevel = #{record.titlelevel,jdbcType=OTHER},
+      <if test="record.titleLevel != null">
+        titleLevel = #{record.titleLevel,jdbcType=OTHER},
       </if>
-      <if test="record.createdate != null">
-        createDate = #{record.createdate,jdbcType=TIMESTAMP},
+      <if test="record.createDate != null">
+        createDate = #{record.createDate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.enabled != null">
         enabled = #{record.enabled,jdbcType=BOOLEAN},
@@ -183,8 +183,8 @@
     update joblevel
     set id = #{record.id,jdbcType=INTEGER},
       `name` = #{record.name,jdbcType=VARCHAR},
-      titleLevel = #{record.titlelevel,jdbcType=OTHER},
-      createDate = #{record.createdate,jdbcType=TIMESTAMP},
+      titleLevel = #{record.titleLevel,jdbcType=OTHER},
+      createDate = #{record.createDate,jdbcType=TIMESTAMP},
       enabled = #{record.enabled,jdbcType=BOOLEAN}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -197,11 +197,11 @@
       <if test="name != null">
         `name` = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="titlelevel != null">
-        titleLevel = #{titlelevel,jdbcType=OTHER},
+      <if test="titleLevel != null">
+        titleLevel = #{titleLevel,jdbcType=OTHER},
       </if>
-      <if test="createdate != null">
-        createDate = #{createdate,jdbcType=TIMESTAMP},
+      <if test="createDate != null">
+        createDate = #{createDate,jdbcType=TIMESTAMP},
       </if>
       <if test="enabled != null">
         enabled = #{enabled,jdbcType=BOOLEAN},
@@ -213,9 +213,18 @@
     <!--@mbg.generated-->
     update joblevel
     set `name` = #{name,jdbcType=VARCHAR},
-      titleLevel = #{titlelevel,jdbcType=OTHER},
-      createDate = #{createdate,jdbcType=TIMESTAMP},
+      titleLevel = #{titleLevel,jdbcType=OTHER},
+      createDate = #{createDate,jdbcType=TIMESTAMP},
       enabled = #{enabled,jdbcType=BOOLEAN}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <delete id="deleteByIds">
+        delete from
+        joblevel
+        where
+        id IN
+        <foreach collection="ids" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
 </mapper>

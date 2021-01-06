@@ -1,28 +1,36 @@
 package org.example.vhr;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-@ApiModel(value = "org-example-vhr-Joblevel")
 @Data
 public class Joblevel {
-    @ApiModelProperty(value = "")
+    /**
+     *
+     */
     private Integer id;
 
     /**
      * 职称名称
      */
-    @ApiModelProperty(value = "职称名称")
     private String name;
 
-    @ApiModelProperty(value = "")
-    private Object titlelevel;
+    /**
+     *
+     */
+    private Object titleLevel;
 
-    @ApiModelProperty(value = "")
-    private Date createdate;
+    /**
+     *
+     */
+    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+    private Date createDate;
 
-    @ApiModelProperty(value = "")
+    /**
+     *
+     */
     private Boolean enabled;
 }
+

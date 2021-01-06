@@ -10,6 +10,7 @@ import org.example.vhr.Joblevel;
 import org.example.vhr.Nation;
 import org.example.vhr.Politicsstatus;
 import org.example.vhr.Position;
+import org.example.vhr.Salary;
 
 import java.util.List;
 
@@ -30,6 +31,8 @@ public class EmployeeRequest extends Employee {
   private Position position;
 
   private Joblevel jobLevel;
+
+  private Salary salary;
 
 
 //  private String birthday;

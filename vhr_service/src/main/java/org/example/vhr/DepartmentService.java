@@ -73,11 +73,15 @@ public class DepartmentService {
         return departmentMapper.selectByPrimaryKey(1).getName();
     }
 
+    public int addDep(Department department){
+        return departmentMapper.addDep(department);
+    }
+
     public List<Department> findAllByParendId() {
          List<Department> departments = departmentMapper.findAll();
        return departments.stream().peek(item->{
             List<Department> children =  departments.stream()
-                    .filter(item2 ->item.getId().equals(item2.getParentid())).collect(Collectors.toList());
+                    .filter(item2 ->item.getId().equals(item2.getParentId())).collect(Collectors.toList());
             item.setChildren(children);
         }).collect(Collectors.toList());
 

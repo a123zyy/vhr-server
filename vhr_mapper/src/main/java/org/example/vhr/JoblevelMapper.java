@@ -1,6 +1,7 @@
 package org.example.vhr;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.example.vhr.Joblevel;
 import org.example.vhr.JoblevelExample;
@@ -27,4 +28,6 @@ public interface JoblevelMapper {
     int updateByPrimaryKeySelective(Joblevel record);
 
     int updateByPrimaryKey(Joblevel record);
+
+    int deleteByIds(@Param("ids") Integer[] ids);
 }

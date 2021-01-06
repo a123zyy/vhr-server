@@ -65,6 +65,10 @@ public class JoblevelService {
         return joblevelMapper.updateByPrimaryKey(record);
     }
 
+    public int deleteByIds(Integer[] ids){
+        return joblevelMapper.deleteByIds(ids);
+    }
+
 }
 
 
