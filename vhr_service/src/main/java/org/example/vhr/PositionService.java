@@ -65,7 +65,7 @@ public class PositionService {
         return positionMapper.updateByPrimaryKey(record);
     }
 
-   public int deleteByIds(List<Integer> ids){
+   public int deleteByIds(Integer[] ids){
         return positionMapper.deleteByIds(ids);
    }
 

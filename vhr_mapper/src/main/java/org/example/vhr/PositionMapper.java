@@ -29,5 +29,5 @@ public interface PositionMapper {
 
     int updateByPrimaryKey(Position record);
 
-    int deleteByIds(@Param("ids") List<Integer> ids);
+    int deleteByIds(@Param("ids") Integer[] ids);
 }

@@ -1,13 +1,6 @@
 package org.example.vhr.controller;
 
-import org.example.vhr.Department;
-import org.example.vhr.DepartmentService;
-import org.example.vhr.Joblevel;
-import org.example.vhr.JoblevelExample;
-import org.example.vhr.JoblevelService;
-import org.example.vhr.Position;
-import org.example.vhr.PositionExample;
-import org.example.vhr.PositionService;
+import org.example.vhr.*;
 import org.example.vhr.controller.until.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -35,6 +28,9 @@ public class PermissController {
 
     @Autowired
     private PositionService positionService;
+
+    @Autowired
+    private RoleService roleService;
     //获取职位树
     @GetMapping("/department")
     public Result getDepartment(){
@@ -85,9 +81,14 @@ public class PermissController {
     public Result UpdatePositions(@PathVariable int id){
         return Result.success(positionService.deleteByPrimaryKey(id));
     }
-    @DeleteMapping("/pos/ids")
-    public Result deletePos(@RequestBody List<Integer> ids){
+    @DeleteMapping("/pos/ids/{ids}")
+    public Result deletePos(@PathVariable Integer[] ids){
         return Result.success(positionService.deleteByIds(ids));
+    }
+
+    @GetMapping("/permiss")
+    public Result getPermiss(){
+        return Result.success(roleService.selectByExample(new RoleExample()));
     }
 
 
