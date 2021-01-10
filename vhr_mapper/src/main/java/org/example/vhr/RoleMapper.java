@@ -3,8 +3,6 @@ package org.example.vhr;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
-import org.example.vhr.Role;
-import org.example.vhr.RoleExample;
 
 public interface RoleMapper {
     long countByExample(RoleExample example);

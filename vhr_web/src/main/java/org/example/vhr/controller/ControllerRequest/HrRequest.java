@@ -1,7 +1,6 @@
 package org.example.vhr.controller.ControllerRequest;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.example.vhr.Hr;
 import org.example.vhr.Role;

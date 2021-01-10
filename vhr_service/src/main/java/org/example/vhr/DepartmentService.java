@@ -80,9 +80,8 @@ public class DepartmentService {
     public List<Department> findAllByParendId() {
          List<Department> departments = departmentMapper.findAll();
        return departments.stream().peek(item->{
-            List<Department> children =  departments.stream()
-                    .filter(item2 ->item.getId().equals(item2.getParentId())).collect(Collectors.toList());
-            item.setChildren(children);
+            item.setChildren(departments.stream().distinct()
+                    .filter(item2 -> item.getId() == item2.getParentId()).collect(Collectors.toList()));
         }).collect(Collectors.toList());
 
     }

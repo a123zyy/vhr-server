@@ -68,7 +68,13 @@ public class MenuService {
 
     public List<Menu> findIdsByMenus(int hrId){
         return menuMapper.findIdsByMenus(hrId);
+    }
+    public  List<Menu> findAll(){
+        return menuMapper.findAll();
+    }
 
+    public List<Integer> getMidByRid(int rid){
+        return menuMapper.getMidByRid(rid);
     }
 }
 

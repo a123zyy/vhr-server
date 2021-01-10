@@ -30,7 +30,7 @@ public interface MenuMapper {
 
     int updateByPrimaryKey(Menu record);
 
-//    @Select(" select \n" +
+    //    @Select(" select \n" +
 //            " distinct \n" +
 //            " m1.*,\n" +
 //            " m2.`id` as id2,\n" +
@@ -51,4 +51,8 @@ public interface MenuMapper {
 //            " order by m1.`id`,m2.`id`\n" +
 //            " ")
     List<Menu> findIdsByMenus(@Param("hrId") int hrId);
+
+    List<Menu> findAll();
+
+    List<Integer> getMidByRid(@Param("rid") int rid);
 }

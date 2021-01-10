@@ -195,4 +195,15 @@
       #{id,javaType=INTEGER}
     </foreach>
   </select>
+  <insert id="insertbyRidAndMids">
+    insert into menu_role (mid,rid) values
+    <foreach collection="mids" separator="," item="mid">
+      (#{mid},#{rid})
+    </foreach>
+  </insert>
+  <delete id="deleteByRid">
+    delete from menu_role
+    WHERE rid = #{rid,javaType=INTEGER}
+  </delete>
+
 </mapper>

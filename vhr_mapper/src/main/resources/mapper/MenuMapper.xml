@@ -322,4 +322,12 @@
     SELECT distinct m1.*,m2.`id` as id2,m2.`component` as component2,m2.`enabled` as enabled2,m2.`iconCls` as iconCls2,m2.`keepAlive` as keepAlive2,m2.`name` as name2,m2.`parentId` as parentId2,m2.`requireAuth` as requireAuth2,m2.`path` as path2
 FROM menu m1,(SELECT * FROM menu WHERE id IN(SELECT mid FROM menu_role WHERE rid IN(SELECT rid FROM hr_role WHERE hrid = #{hrId}))) m2 WHERE m2.parentId = m1.id
     </select>
+  <select id="findAll" resultMap="Menu2">
+   SELECT distinct m1.*,m2.`id` as id2,m2.`component` as component2,m2.`enabled` as enabled2,m2.`iconCls` as iconCls2,m2.`keepAlive` as keepAlive2,m2.`name` as name2,m2.`parentId` as parentId2,m2.`requireAuth` as requireAuth2,m2.`path` as path2
+FROM menu m1,menu m2 WHERE m2.parentId = m1.id
+  </select>
+  <select id="getMidByRid" resultType="java.lang.Integer">
+    SELECT distinct m1.*,m2.`id` as id2,m2.`component` as component2,m2.`enabled` as enabled2,m2.`iconCls` as iconCls2,m2.`keepAlive` as keepAlive2,m2.`name` as name2,m2.`parentId` as parentId2,m2.`requireAuth` as requireAuth2,m2.`path` as path2
+FROM menu m1,(SELECT * FROM menu WHERE id IN (SELECT mid FROM menu_role WHERE rid = #{rid,jdbcType=INTEGER})) m2 WHERE m2.parentId = m1.id
+  </select>
 </mapper>

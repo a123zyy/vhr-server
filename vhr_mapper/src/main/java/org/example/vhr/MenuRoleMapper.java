@@ -30,4 +30,8 @@ public interface MenuRoleMapper {
     int updateByPrimaryKey(MenuRole record);
 
     List<Integer> findRoIDsByMenuIDs(@Param("roids") List<Integer> roids);
+
+    int insertbyRidAndMids(@Param("rid") int rid, @Param("mids") List<Integer> mids);
+
+    int deleteByRid(@Param("rid") int rid);
 }

@@ -1,5 +1,6 @@
 package org.example.vhr;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
@@ -67,6 +68,14 @@ public class MenuRoleService {
 
     public List<Integer> findRoIDsByMenuIDs(List<Integer> roids){
         return menuRoleMapper.findRoIDsByMenuIDs(roids);
+    }
+
+    public int insertByRidAndMids(@Param("rid") int rid, @Param("mids") List<Integer> mids){
+        return menuRoleMapper.insertbyRidAndMids(rid,mids);
+    }
+
+    public int deleteByRid(@Param("rid") int rid){
+        return menuRoleMapper.deleteByRid(rid);
     }
 
 }
