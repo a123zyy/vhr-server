@@ -40,7 +40,7 @@ public class EmpBasicController {
     @PostMapping("/")
     public Result getEmpBasic(@RequestBody EmployeeRequest employeeRequest){
         EmployeeExample employeeExample = new EmployeeExample();
-        employeeExample.setOrderByClause("");
+        employeeExample.setOrderByClause("id");
         PageHelper.startPage(employeeRequest.getPageNo(),employeeRequest.getPageSize(),true);
         PageInfo<Employee> pageInfo = new PageInfo<Employee>(employeeService.selectByExample(employeeExample));
         employeeRequest.setData(pageInfo.getList().stream().map(this::getEmployee).collect(Collectors.toList()));
