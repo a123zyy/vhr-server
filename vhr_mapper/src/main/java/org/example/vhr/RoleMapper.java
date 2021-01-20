@@ -28,4 +28,6 @@ public interface RoleMapper {
     int updateByPrimaryKey(Role record);
 
     List<Role> findbyLikeRoleName(@Param("roleNme") String roleNme);
+
+    List<Role> findByHrid(@Param("hrid") int hrid);
 }

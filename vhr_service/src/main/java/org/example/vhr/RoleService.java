@@ -1,5 +1,6 @@
 package org.example.vhr;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
@@ -69,6 +70,10 @@ public class RoleService {
     public List<Role> findbyLikeRoleName(String roleNme) {
         return roleMapper.findbyLikeRoleName(roleNme);
     };
+
+    public List<Role> findByHrid(@Param("hrid") int hrid){
+        return roleMapper.findByHrid(hrid);
+    }
 
 }
 

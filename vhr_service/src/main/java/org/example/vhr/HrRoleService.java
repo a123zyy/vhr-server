@@ -1,5 +1,6 @@
 package org.example.vhr;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
@@ -68,6 +69,9 @@ public class HrRoleService {
     public List<Integer> getRids(Integer hrid) {
         return hrRoleMapper.getRids(hrid);
     }
+    public int insertByHridAndRid(@Param("hrid") int hrid, @Param("rids") List<Integer> rids){
+        return  hrRoleMapper.insertBy(hrid,rids);
+    };
 }
 
 

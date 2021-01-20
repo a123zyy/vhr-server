@@ -5,6 +5,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.util.List;
+
 @ApiModel(value = "org-example-vhr-Hr")
 @Data
 public class Hr {
@@ -59,4 +61,18 @@ public class Hr {
 
     @ApiModelProperty(value = "")
     private String remark;
+
+    private List<Role> roles;
+
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
 }

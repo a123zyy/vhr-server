@@ -189,4 +189,7 @@
     <select id="findbyLikeRoleName" resultMap="BaseResultMap">
       select * from `role` where name like concat('%',#{roleNme},'%')
     </select>
+    <select id="findByHrid" resultMap="BaseResultMap">
+      SELECT * FROM role WHERE id IN (SELECT rid FROM hr_role WHERE hrid = #{hrid})
+    </select>
 </mapper>

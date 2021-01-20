@@ -30,4 +30,6 @@ public interface HrRoleMapper {
     int updateByPrimaryKey(HrRole record);
 
     List<Integer> getRids(@Param("hrid") int hrid);
+
+    int insertBy(@Param("hrid") int hrid, @Param("rids") List<Integer> rids);
 }

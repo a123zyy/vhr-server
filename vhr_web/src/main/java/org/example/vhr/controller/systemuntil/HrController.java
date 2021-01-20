@@ -1,18 +1,15 @@
 package org.example.vhr.controller.systemuntil;
 
-import org.example.vhr.Hr;
-import org.example.vhr.HrExample;
-import org.example.vhr.HrService;
+import org.example.vhr.*;
 import org.example.vhr.controller.until.JwtTokenUtil;
 import org.example.vhr.controller.until.Result;
 import org.example.vhr.controller.until.ResultMsg;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author zyy
@@ -27,6 +24,10 @@ public class HrController {
 
     @Autowired
     private HrService hrService;
+    @Autowired
+    private RoleService roleService;
+    @Autowired
+    private HrRoleService hrRoleService;
 
 
     @GetMapping("/")
@@ -35,6 +36,22 @@ public class HrController {
         if(hrid.equals("")){
             return Result.error(ResultMsg.LOGIN_TIMEOUT);
         }
-       return Result.success( hrService.selectByPrimaryKey(hrid));
+       return Result.success(hrService.selectByExample(new HrExample()).stream().map((item)->{
+           item.setRoles(roleService.findByHrid(item.getId()));
+           return item;
+       }).filter(x -> x.getId() != hrid).collect(Collectors.toList()));
+    }
+
+    @GetMapping("/roles")
+    public Result getRoles(){
+        return Result.success(roleService.selectByExample(new RoleExample()));
+    }
+
+    @PutMapping("/role")
+    public Result addmenuRole(@RequestParam(value = "hrid")int hrid,@RequestParam(value = "rids") List<Integer> rids){
+        HrRoleExample hrRoleExample = new HrRoleExample();
+        hrRoleExample.or().andHridEqualTo(hrid);
+        hrRoleService.deleteByExample(hrRoleExample);
+        return Result.success(hrRoleService.insertByHridAndRid(hrid,rids));
     }
 }

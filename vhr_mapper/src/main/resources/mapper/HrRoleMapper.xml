@@ -189,4 +189,10 @@
   <select id="getRids" resultType="java.lang.Integer">
       select rid from hr_role where hrid = #{hrid,jdbcType=INTEGER}
   </select>
+  <insert id="insertBy">
+    insert into hr_role(hrid,rid) values
+    <foreach collection="rids" separator="," item="rid">
+      (#{hrid},#{rid})
+    </foreach>
+  </insert>
 </mapper>
