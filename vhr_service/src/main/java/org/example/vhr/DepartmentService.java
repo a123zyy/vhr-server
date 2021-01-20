@@ -1,6 +1,5 @@
 package org.example.vhr;
 
-import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.BeanUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
@@ -83,8 +82,7 @@ public class DepartmentService {
     public List<Department> findAllByParendId() {
          List<Department> departments = departmentMapper.findAll();
          return departments.stream().peek(item->{
-                 List<Department> chirld = departments.stream().filter(item2 -> item.getId().equals(item2.getParentId())).collect(Collectors.toList());
-                 item.setChildren(chirld);
+                 item.setChildren(departments.stream().filter(item2 -> item.getId().equals(item2.getParentId())).collect(Collectors.toList()));
          }).filter(x-> x.getParentId() == -1).collect(Collectors.toList());
     }
 
