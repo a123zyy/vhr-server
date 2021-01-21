@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequestMapping("/system/basic/permiss")
 @RestController
@@ -19,6 +20,7 @@ public class PermissController {
     private MenuService menuService;
     @Autowired
     private MenuRoleService menuRoleService;
+
 
     @GetMapping("/")
     public Result getPermiss(){
@@ -34,9 +36,13 @@ public class PermissController {
     public Result getMenus(){
         return Result.success(menuService.findAll());
     }
+
+
     @GetMapping("/mids/{id}")
     public Result getMidByrid(@PathVariable int id){
-        return Result.success(menuService.getMidByRid(id));
+        MenuRoleExample menuRoleExample =new MenuRoleExample();
+        menuRoleExample.or().andRidEqualTo(id);
+        return Result.success(menuRoleService.selectByExample(menuRoleExample).stream().map(item-> item.getMid()).collect(Collectors.toList()));
     }
     @PutMapping("/")
     public Result addmenuRole(@RequestParam(value = "rid")int rid,@RequestParam(value = "mids") List<Integer> mids){
