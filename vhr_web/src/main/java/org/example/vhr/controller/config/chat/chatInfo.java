@@ -4,6 +4,7 @@ import org.example.vhr.Hr;
 import org.example.vhr.HrExample;
 import org.example.vhr.HrService;
 import org.example.vhr.controller.config.ChatMsg;
+import org.example.vhr.controller.until.JwtTokenUtil;
 import org.example.vhr.controller.until.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -27,9 +30,13 @@ public class chatInfo {
     @Autowired
     private SimpMessagingTemplate simpMessagingTemplate;
 
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
+
     @GetMapping("/chat/hrs")
-    public Result getHrs(){
-       return Result.success(hrService.selectByExample(new HrExample()));
+    public Result getHrs(HttpServletRequest request){
+        Integer hrid = jwtTokenUtil.getUseridFromToken(request.getHeader("token"));
+        return Result.success(hrService.selectByExample(new HrExample()).stream().filter(x -> !x.getId().equals(hrid)).collect(Collectors.toList()));
     }
 
     @MessageMapping("/ws/chat")
