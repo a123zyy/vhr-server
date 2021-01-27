@@ -1,7 +1,5 @@
 package org.example.vhr.controller.ControllerRequest;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import org.example.vhr.Department;

@@ -1,4 +1,4 @@
-package org.example.vhr.controller.SystemUntil;
+package org.example.vhr.controller.systemuntil;
 
 import org.example.vhr.*;
 import org.example.vhr.controller.until.Result;

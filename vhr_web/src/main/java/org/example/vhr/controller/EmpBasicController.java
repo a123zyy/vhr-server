@@ -4,16 +4,13 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.example.vhr.*;
 import org.example.vhr.controller.ControllerRequest.EmployeeRequest;
-import org.example.vhr.controller.until.Global;
 import org.example.vhr.controller.until.Result;
 import org.example.vhr.controller.until.ResultMsg;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+
 import java.util.Objects;
 import java.util.stream.Collectors;
 
