@@ -1,14 +1,19 @@
-package org.example.vhr.controller;
+package org.example.vhr.controller.webcontroller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.commons.lang3.StringUtils;
 import org.example.vhr.*;
 import org.example.vhr.controller.ControllerRequest.EmployeeRequest;
 import org.example.vhr.controller.until.Result;
 import org.example.vhr.controller.until.ResultMsg;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
+import sun.jvm.hotspot.debugger.win32.coff.DebugVC50SrcModFileDesc;
 
 
 import java.util.Objects;
@@ -17,6 +22,8 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/employee/basic")
 @CrossOrigin(origins = "*")
+@CacheConfig()
+
 public class EmpBasicController {
     @Autowired
     private EmployeeService employeeService;
@@ -34,10 +41,15 @@ public class EmpBasicController {
     private DepartmentService departmentService;
 
 
+
     @PostMapping("/")
+    @Cacheable(value = "empListCache", key = "'emp_list_test'+#employeeRequest.pageNo+#employeeRequest.name")
     public Result getEmpBasic(@RequestBody EmployeeRequest employeeRequest){
         EmployeeExample employeeExample = new EmployeeExample();
         employeeExample.setOrderByClause("id");
+        if (!StringUtils.isBlank(employeeRequest.getName())){
+            employeeExample.or().andNameLike("%"+employeeRequest.getName()+"%");
+        }
         PageHelper.startPage(employeeRequest.getPageNo(),employeeRequest.getPageSize(),true);
         PageInfo<Employee> pageInfo = new PageInfo<Employee>(employeeService.selectByExample(employeeExample));
         employeeRequest.setData(pageInfo.getList().stream().map(this::getEmployee).collect(Collectors.toList()));

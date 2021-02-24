@@ -3,24 +3,37 @@ package org.example.vhr.controller.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
+import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
+/**
+ * @author zyy
+ */
 @Configuration
 @EnableWebSocketMessageBroker
 @RestController
+@CrossOrigin(origins = "*")
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
-    @Override
-    public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/ws/ep")
-                .setAllowedOrigins("http://localhost:8080")
-                .withSockJS();
-    }
 
     @Override
+    public void registerStompEndpoints(StompEndpointRegistry registry) {
+        System.out.println(registry);
+
+        System.out.println("Socket正在营业.....");
+        registry.addEndpoint("/ws/ep")
+                .setAllowedOriginPatterns("*")
+                //.setAllowedOrigins("http://localhost:8080")
+                .withSockJS();
+        registry.addEndpoint("/ws/test").setAllowedOriginPatterns("*").withSockJS();
+    }
+    @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
+        System.out.println("我们中间混进奇怪的东西！");
         registry.enableSimpleBroker("/queue");
     }
 }

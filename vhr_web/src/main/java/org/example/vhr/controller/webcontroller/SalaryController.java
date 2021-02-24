@@ -1,4 +1,4 @@
-package org.example.vhr.controller;
+package org.example.vhr.controller.webcontroller;
 
 import org.example.vhr.Salary;
 import org.example.vhr.SalaryExample;

@@ -13,6 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import javax.websocket.Session;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -41,6 +42,7 @@ public class chatInfo {
 
     @MessageMapping("/ws/chat")
     public void handleMsg(Authentication authentication, ChatMsg chatMsg) {
+        System.out.println(authentication.getDetails());
         System.out.println(chatMsg.getFromNickname());
         System.out.println(chatMsg.getContent());
         Hr hr = (Hr) authentication.getPrincipal();
@@ -49,6 +51,18 @@ public class chatInfo {
         chatMsg.setDate(new Date());
         simpMessagingTemplate.convertAndSendToUser(chatMsg.getTo(), "/queue/chat", chatMsg);
     }
+
+    /***
+     * 处理消息的方法.
+     * @param
+     */
+    @MessageMapping("/ws/test")
+    public void handtest(ChatMsg chatMsg) {
+        chatMsg.setDate(new Date());
+        System.out.println("发送消息:" + chatMsg);
+        simpMessagingTemplate.convertAndSendToUser(chatMsg.getTo(), "/queue/test", chatMsg);
+    }
+
 
 
 }

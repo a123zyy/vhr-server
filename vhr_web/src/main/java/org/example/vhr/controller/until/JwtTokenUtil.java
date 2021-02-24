@@ -30,6 +30,8 @@ import java.util.Map;
 public class JwtTokenUtil {
     private static final Logger LOGGER = LoggerFactory.getLogger(JwtTokenUtil.class);
     private static final String CLAIM_KEY_UID = "sub";
+    private static final String CLAIM_KEY_UserName = "name";
+
     private static final String CLAIM_KEY_CREATED = "created";
     @Value("${jwt.secret}")
     private  String secret;
@@ -73,7 +75,7 @@ public class JwtTokenUtil {
     }
 
     /**
-     * 从token中获取登录用户名
+     * 从token中获取登录用户id
      */
     public Integer getUseridFromToken(String token) {
         String uid;
@@ -84,6 +86,20 @@ public class JwtTokenUtil {
             uid = null;
         }
         return Integer.parseInt(uid);
+    }
+
+    /**
+     * 从token中获取登录用户name
+     */
+    public String getNameFromToken(String token) {
+        String name;
+        try {
+            Claims claims = getClaimsFromToken(token);
+            name = (String) claims.get(CLAIM_KEY_UserName);
+        } catch (Exception e) {
+            name = null;
+        }
+        return name;
     }
 
     /**
@@ -119,6 +135,7 @@ public class JwtTokenUtil {
     public  String generateToken(Hr userInfo) {
         Map<String, Object> claims = new HashMap<>();
         claims.put(CLAIM_KEY_UID, userInfo.getId());
+        claims.put(CLAIM_KEY_UserName, userInfo.getName());
         claims.put(CLAIM_KEY_CREATED, new Date());
         return generateToken(claims);
     }

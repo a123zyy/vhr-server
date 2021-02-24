@@ -3,19 +3,25 @@ server:
 spring:
   datasource:
     username: root
-    password: yy123456
-    url: jdbc:mysql://127.0.0.1:3306/vhr?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    password: root
+    url: jdbc:mysql://localhost:3306/vhr?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
   neo4j:
     security:
       hostname-verification-enabled: false
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    clean-on-validation-error: false
+  aop:
+    auto: true
+    proxy-target-class: true
 mybatis:
    mapper-locations: classpath:mapper/*.xml
 logging:
   level:
     org.example.vhr: debug
     org.springframework.boot.autoconfigure: error
-
 
 
 #  type-aliases-package: vhr_model/src/main/java/org.example.vhr

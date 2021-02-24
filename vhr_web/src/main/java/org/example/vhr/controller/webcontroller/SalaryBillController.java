@@ -1,4 +1,4 @@
-package org.example.vhr.controller;
+package org.example.vhr.controller.webcontroller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
