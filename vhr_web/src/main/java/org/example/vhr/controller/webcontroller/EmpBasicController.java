@@ -11,6 +11,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 import sun.jvm.hotspot.debugger.win32.coff.DebugVC50SrcModFileDesc;
@@ -58,6 +59,7 @@ public class EmpBasicController {
     }
 
     @PutMapping("/")
+    @CachePut
     public Result addEmployeeRequest(@RequestBody EmployeeRequest request){
         if (Objects.isNull(request)){
             return Result.error(ResultMsg.MISSING_ROOT_ERR);
@@ -85,6 +87,7 @@ public class EmpBasicController {
         return Result.success("success");
     }
     @PatchMapping("/")
+    @CachePut
     public Result updateEmployeeRequest(@RequestBody EmployeeRequest request){
         if (Objects.isNull(request)){
             return Result.error(ResultMsg.MISSING_ROOT_ERR);

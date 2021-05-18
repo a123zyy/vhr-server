@@ -585,4 +585,7 @@
     <select id="getMaxWorkID" resultType="int">
         SELECT IFNULL(MAX(id),0) FROM employee
     </select>
+    <select id="getAllEmployee_COUNT" resultType="long">
+        select COUNT(id) from employee
+    </select>
 </mapper>

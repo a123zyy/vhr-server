@@ -28,12 +28,16 @@ public class HrInfoController {
 
     @GetMapping("/info")
     public Result getHrInfo(HttpServletRequest request){
+        StringBuffer stringBuffer =new StringBuffer();
         Integer hrid = jwtTokenUtil.getUseridFromToken(request.getHeader("token"));
         if(hrid.equals("")){
             return Result.error(ResultMsg.LOGIN_TIMEOUT);
         }
        return Result.success(hrService.selectByPrimaryKey(hrid));
     }
+
+
+
 
     @PutMapping("/info")
     public Result updateHrInfo(@RequestBody Hr hr){

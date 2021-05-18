@@ -29,4 +29,6 @@ public interface EmployeeMapper {
     int updateByPrimaryKey(Employee record);
 
     int getMaxWorkID();
+
+    long getAllEmployee_COUNT();
 }

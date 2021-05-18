@@ -5,9 +5,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 @ApiModel(value = "org-example-vhr-Employee")
-
 public class Employee {
     public Integer getId() {
         return id;

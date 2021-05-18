@@ -27,6 +27,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(getLoginInterceptor()).addPathPatterns("/**")//拦截所有url
                 //除了登录接口
                 .excludePathPatterns("/doLogin")
+                .excludePathPatterns("/test")
                 .excludePathPatterns("/logout")
                 .excludePathPatterns("/sockjs-node/info")
                 .excludePathPatterns("/verifyCode");

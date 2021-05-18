@@ -39,11 +39,6 @@ public class LoginController {
 //    @Autowired
 //    SessionRegistry sessionRegistry;
 
-    @GetMapping("/test")
-    public String getTest() {
-        return "success";
-    }
-
 
     @GetMapping("/doLogin")
      public Result doLogin(String code,String username,String password){
