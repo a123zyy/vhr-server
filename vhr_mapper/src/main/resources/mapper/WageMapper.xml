@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.vhr.WageMapper">
+  <resultMap id="BaseResultMap" type="org.example.vhr.Wage">
+    <!--@mbg.generated-->
+    <!--@Table wage-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="staff_name" jdbcType="VARCHAR" property="staffName" />
+    <result column="salary_id" jdbcType="INTEGER" property="salaryId" />
+    <result column="base_salary" jdbcType="DOUBLE" property="baseSalary" />
+    <result column="project_bonus" jdbcType="DOUBLE" property="projectBonus" />
+    <result column="jobs_year_bonus" jdbcType="DOUBLE" property="jobsYearBonus" />
+    <result column="other_bonus" jdbcType="DOUBLE" property="otherBonus" />
+    <result column="position_bonus" jdbcType="DOUBLE" property="positionBonus" />
+    <result column="performance_bonus" jdbcType="DOUBLE" property="performanceBonus" />
+    <result column="status" jdbcType="BOOLEAN" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `uid`, staff_name, salary_id, base_salary, project_bonus, jobs_year_bonus, other_bonus, 
+    position_bonus, performance_bonus, `status`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from wage
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from wage
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.example.vhr.Wage" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into wage (`uid`, staff_name, salary_id, 
+      base_salary, project_bonus, jobs_year_bonus, 
+      other_bonus, position_bonus, performance_bonus, 
+      `status`)
+    values (#{uid,jdbcType=INTEGER}, #{staffName,jdbcType=VARCHAR}, #{salaryId,jdbcType=INTEGER}, 
+      #{baseSalary,jdbcType=DOUBLE}, #{projectBonus,jdbcType=DOUBLE}, #{jobsYearBonus,jdbcType=DOUBLE}, 
+      #{otherBonus,jdbcType=DOUBLE}, #{positionBonus,jdbcType=DOUBLE}, #{performanceBonus,jdbcType=DOUBLE}, 
+      #{status,jdbcType=BOOLEAN})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.example.vhr.Wage" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into wage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        `uid`,
+      </if>
+      <if test="staffName != null">
+        staff_name,
+      </if>
+      <if test="salaryId != null">
+        salary_id,
+      </if>
+      <if test="baseSalary != null">
+        base_salary,
+      </if>
+      <if test="projectBonus != null">
+        project_bonus,
+      </if>
+      <if test="jobsYearBonus != null">
+        jobs_year_bonus,
+      </if>
+      <if test="otherBonus != null">
+        other_bonus,
+      </if>
+      <if test="positionBonus != null">
+        position_bonus,
+      </if>
+      <if test="performanceBonus != null">
+        performance_bonus,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="staffName != null">
+        #{staffName,jdbcType=VARCHAR},
+      </if>
+      <if test="salaryId != null">
+        #{salaryId,jdbcType=INTEGER},
+      </if>
+      <if test="baseSalary != null">
+        #{baseSalary,jdbcType=DOUBLE},
+      </if>
+      <if test="projectBonus != null">
+        #{projectBonus,jdbcType=DOUBLE},
+      </if>
+      <if test="jobsYearBonus != null">
+        #{jobsYearBonus,jdbcType=DOUBLE},
+      </if>
+      <if test="otherBonus != null">
+        #{otherBonus,jdbcType=DOUBLE},
+      </if>
+      <if test="positionBonus != null">
+        #{positionBonus,jdbcType=DOUBLE},
+      </if>
+      <if test="performanceBonus != null">
+        #{performanceBonus,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BOOLEAN},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.example.vhr.Wage">
+    <!--@mbg.generated-->
+    update wage
+    <set>
+      <if test="uid != null">
+        `uid` = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="staffName != null">
+        staff_name = #{staffName,jdbcType=VARCHAR},
+      </if>
+      <if test="salaryId != null">
+        salary_id = #{salaryId,jdbcType=INTEGER},
+      </if>
+      <if test="baseSalary != null">
+        base_salary = #{baseSalary,jdbcType=DOUBLE},
+      </if>
+      <if test="projectBonus != null">
+        project_bonus = #{projectBonus,jdbcType=DOUBLE},
+      </if>
+      <if test="jobsYearBonus != null">
+        jobs_year_bonus = #{jobsYearBonus,jdbcType=DOUBLE},
+      </if>
+      <if test="otherBonus != null">
+        other_bonus = #{otherBonus,jdbcType=DOUBLE},
+      </if>
+      <if test="positionBonus != null">
+        position_bonus = #{positionBonus,jdbcType=DOUBLE},
+      </if>
+      <if test="performanceBonus != null">
+        performance_bonus = #{performanceBonus,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=BOOLEAN},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.example.vhr.Wage">
+    <!--@mbg.generated-->
+    update wage
+    set `uid` = #{uid,jdbcType=INTEGER},
+      staff_name = #{staffName,jdbcType=VARCHAR},
+      salary_id = #{salaryId,jdbcType=INTEGER},
+      base_salary = #{baseSalary,jdbcType=DOUBLE},
+      project_bonus = #{projectBonus,jdbcType=DOUBLE},
+      jobs_year_bonus = #{jobsYearBonus,jdbcType=DOUBLE},
+      other_bonus = #{otherBonus,jdbcType=DOUBLE},
+      position_bonus = #{positionBonus,jdbcType=DOUBLE},
+      performance_bonus = #{performanceBonus,jdbcType=DOUBLE},
+      `status` = #{status,jdbcType=BOOLEAN}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

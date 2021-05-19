@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.vhr.RewardAndPunishmentMapper">
+  <resultMap id="BaseResultMap" type="org.example.vhr.RewardAndPunishment">
+    <!--@mbg.generated-->
+    <!--@Table reward_and_punishment-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="reward_punishment_type" jdbcType="BOOLEAN" property="rewardPunishmentType" />
+    <result column="reward_punishment_price" jdbcType="DOUBLE" property="rewardPunishmentPrice" />
+    <result column="reward_punishment_items" jdbcType="VARCHAR" property="rewardPunishmentItems" />
+    <result column="status" jdbcType="BOOLEAN" property="status" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="implementation_data" jdbcType="TIMESTAMP" property="implementationData" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, reward_punishment_type, reward_punishment_price, reward_punishment_items, `status`, 
+    create_date, implementation_data
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from reward_and_punishment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from reward_and_punishment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.example.vhr.RewardAndPunishment">
+    <!--@mbg.generated-->
+    insert into reward_and_punishment (id, reward_punishment_type, reward_punishment_price, 
+      reward_punishment_items, `status`, create_date, 
+      implementation_data)
+    values (#{id,jdbcType=INTEGER}, #{rewardPunishmentType,jdbcType=BOOLEAN}, #{rewardPunishmentPrice,jdbcType=DOUBLE}, 
+      #{rewardPunishmentItems,jdbcType=VARCHAR}, #{status,jdbcType=BOOLEAN}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{implementationData,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="org.example.vhr.RewardAndPunishment">
+    <!--@mbg.generated-->
+    insert into reward_and_punishment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="rewardPunishmentType != null">
+        reward_punishment_type,
+      </if>
+      <if test="rewardPunishmentPrice != null">
+        reward_punishment_price,
+      </if>
+      <if test="rewardPunishmentItems != null">
+        reward_punishment_items,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="implementationData != null">
+        implementation_data,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="rewardPunishmentType != null">
+        #{rewardPunishmentType,jdbcType=BOOLEAN},
+      </if>
+      <if test="rewardPunishmentPrice != null">
+        #{rewardPunishmentPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="rewardPunishmentItems != null">
+        #{rewardPunishmentItems,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BOOLEAN},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="implementationData != null">
+        #{implementationData,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.example.vhr.RewardAndPunishment">
+    <!--@mbg.generated-->
+    update reward_and_punishment
+    <set>
+      <if test="rewardPunishmentType != null">
+        reward_punishment_type = #{rewardPunishmentType,jdbcType=BOOLEAN},
+      </if>
+      <if test="rewardPunishmentPrice != null">
+        reward_punishment_price = #{rewardPunishmentPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="rewardPunishmentItems != null">
+        reward_punishment_items = #{rewardPunishmentItems,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=BOOLEAN},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="implementationData != null">
+        implementation_data = #{implementationData,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.example.vhr.RewardAndPunishment">
+    <!--@mbg.generated-->
+    update reward_and_punishment
+    set reward_punishment_type = #{rewardPunishmentType,jdbcType=BOOLEAN},
+      reward_punishment_price = #{rewardPunishmentPrice,jdbcType=DOUBLE},
+      reward_punishment_items = #{rewardPunishmentItems,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=BOOLEAN},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      implementation_data = #{implementationData,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
