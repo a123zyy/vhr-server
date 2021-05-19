@@ -1,8 +1,10 @@
 package org.example.vhr;
 
+import org.example.vhr.until.Global;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PositionService {
@@ -22,7 +24,7 @@ public class PositionService {
 
 
     public int deleteByPrimaryKey(Integer id) {
-         return positionMapper.deleteByPrimaryKey(id);
+        return positionMapper.deleteByPrimaryKey(id);
     }
 
 
@@ -65,11 +67,14 @@ public class PositionService {
         return positionMapper.updateByPrimaryKey(record);
     }
 
-   public int deleteByIds(Integer[] ids){
+    public int deleteByIds(Integer[] ids) {
         return positionMapper.deleteByIds(ids);
-   }
+    }
 
 }
+
+
+
 
 
 

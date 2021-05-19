@@ -1,25 +1,28 @@
 package org.example.vhr;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-@ApiModel(value = "org-example-vhr-Position")
 @Data
 public class Position {
-    @ApiModelProperty(value = "")
+
+
     private Integer id;
 
     /**
      * 职位
      */
-    @ApiModelProperty(value = "职位")
     private String name;
 
-    @ApiModelProperty(value = "")
-    private Date createdate;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    private Date createDate;
 
-    @ApiModelProperty(value = "")
+    /**
+     * 0 实习 1 初级 2中级 3高级
+     */
+    private Byte positionType;
+
     private Boolean enabled;
 }
