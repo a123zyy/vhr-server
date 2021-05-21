@@ -3,7 +3,7 @@ package org.example.vhr;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import org.example.vhr.RewardAndPunishment;
-import org.example.vhr.RewardAndPunishmentMapper;
+import org.example.vhr.RewardAndPunishmentMapper;import java.util.List;
 
 @Service
 public class RewardAndPunishmentService {
@@ -41,5 +41,29 @@ public class RewardAndPunishmentService {
         return rewardAndPunishmentMapper.updateByPrimaryKey(record);
     }
 
+    public long countByExample(RewardAndPunishmentExample example) {
+        return rewardAndPunishmentMapper.countByExample(example);
+    }
+
+    public int deleteByExample(RewardAndPunishmentExample example) {
+        return rewardAndPunishmentMapper.deleteByExample(example);
+    }
+
+    public List<RewardAndPunishment> selectByExample(RewardAndPunishmentExample example) {
+        return rewardAndPunishmentMapper.selectByExample(example);
+    }
+
+    public int updateByExampleSelective(RewardAndPunishment record, RewardAndPunishmentExample example) {
+        return rewardAndPunishmentMapper.updateByExampleSelective(record, example);
+    }
+
+    public int updateByExample(RewardAndPunishment record, RewardAndPunishmentExample example) {
+        return rewardAndPunishmentMapper.updateByExample(record, example);
+    }
 }
+
+
+
+
+
 

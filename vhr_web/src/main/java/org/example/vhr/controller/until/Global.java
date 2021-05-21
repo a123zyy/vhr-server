@@ -1,6 +1,7 @@
 package org.example.vhr.controller.until;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -21,6 +22,13 @@ public class Global {
         Instant instant = Instant.ofEpochMilli(timestamp.getTime());
         return DATE_FORMAT.format(
                 LocalDateTime.ofInstant(instant, ZoneId.systemDefault()));
+    }
+
+    public static Date String_to_java_util_Date(String data){  // String 转 java.util.Date
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate localDate = LocalDate.parse(data, formatter);
+        Instant instant = localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
+        return java.util.Date.from(instant);
     }
 
 }
