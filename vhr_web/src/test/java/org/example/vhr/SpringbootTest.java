@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Random;
 
@@ -106,4 +107,37 @@ public class SpringbootTest {
         Random ran = new Random();
         return (char) (0x4e00 + ran.nextInt(DATA));
     }
+
+    @Test
+    public void getparamname1(){
+        int[] nums = new int[]{5,14,8,23,32,41,2};
+        System.out.println(Arrays.toString(nums));
+
+    }
+
+    public class Main{
+        public int get(int[] row){
+            if (row.length == 0){
+                return 0;
+            } else if (row.length == 1){
+                return row[0];
+            }
+            int temp = 0;
+            for (int i = 0; i < row.length-1; i++) {
+                for (int k = 0; k<(row.length-1)-i;k++){
+                    if (row[k]>row[k+1]){
+                        temp = row[k];
+                        row[k] = row[k+1];
+                        row[k+1] = temp;
+                    }
+
+                }
+            }
+            return row[0];
+        }
+    }
+
+
 }
+
+

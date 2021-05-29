@@ -2,11 +2,14 @@ package org.example.vhr.controller.ControllerRequest;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
 
 import java.util.List;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@Scope("prototype")
 public class EmpAdvancRequest {
 
     private int id;

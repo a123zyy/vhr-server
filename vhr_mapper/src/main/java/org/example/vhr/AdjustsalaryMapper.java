@@ -27,4 +27,8 @@ public interface AdjustsalaryMapper {
     int updateByPrimaryKeySelective(Adjustsalary record);
 
     int updateByPrimaryKey(Adjustsalary record);
+
+    int insertList(@Param("list")List<Adjustsalary> list);
+
+
 }

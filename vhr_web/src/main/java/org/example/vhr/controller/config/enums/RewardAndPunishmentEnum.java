@@ -1,7 +1,7 @@
 package org.example.vhr.controller.config.enums;
 
 public enum  RewardAndPunishmentEnum {
-    IS_STATUS(1,"在线"),NO_STATUS(0,"离线"),CANCEL_STATUS(3,"已取消");
+    IS_STATUS(1,"已生效"),NO_STATUS(0,"未生效"),CANCEL_STATUS(3,"已取消");
     public final int val;
     private final String desc;
 
