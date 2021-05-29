@@ -9,6 +9,7 @@ import org.example.vhr.RewardAndPunishmentExample;
 import org.example.vhr.RewardAndPunishmentService;
 import org.example.vhr.controller.ControllerRequest.RewardAndPunishmentRequest;
 import org.example.vhr.controller.config.enums.RewardAndPunishmentEnum;
+import org.example.vhr.controller.customConfig.SizeJudge;
 import org.example.vhr.controller.until.Global;
 import org.example.vhr.controller.until.Result;
 import org.example.vhr.controller.until.ResultController;
@@ -22,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
+
 @RestController
 @RequestMapping("/rewardAndPunish")
 @CrossOrigin(origins = "*")
@@ -33,7 +36,7 @@ public class RewardAndPunishController {
     @GetMapping("/")
     public Result getRewardAndPunish(int pageSize,int pageNum){
         RewardAndPunishmentExample example = new RewardAndPunishmentExample();
-        example.or().andStatusEqualTo(RewardAndPunishmentEnum.IS_STATUS.val);
+        example.or().andStatusNotEqualTo(RewardAndPunishmentEnum.CANCEL_STATUS.val);
         PageHelper.startPage(pageSize,pageNum,true);
         PageInfo<RewardAndPunishment> pageInfo = new PageInfo<RewardAndPunishment>(punishmentService.selectByExample(example));
         ResultController resultController = new ResultController();
@@ -52,6 +55,7 @@ public class RewardAndPunishController {
         }
         RewardAndPunishment rewardAndPunishment = new RewardAndPunishment();
         BeanUtils.copyProperties(andPunishmentRequest,rewardAndPunishment);
+        rewardAndPunishment.setStatus(RewardAndPunishmentEnum.NO_STATUS.val);
         punishmentService.insertSelective(rewardAndPunishment);
         return Result.success("成功");
 
@@ -65,6 +69,7 @@ public class RewardAndPunishController {
         if (andPunishmentRequest.getRewardPunishmentType() == null ||andPunishmentRequest.getEmpId() == null || andPunishmentRequest.getImplementationData() == null){
             return Result.error(ResultMsg.CLASS_NOT_FOUND_ERR);
         }
+
         RewardAndPunishment rewardAndPunishment = punishmentService.selectByPrimaryKey(andPunishmentRequest.getId());
         BeanUtils.copyProperties(andPunishmentRequest,rewardAndPunishment);
         punishmentService.updateByPrimaryKeySelective(rewardAndPunishment);
@@ -81,4 +86,6 @@ public class RewardAndPunishController {
         punishmentService.updateByPrimaryKeySelective(rewardAndPunishment);
         return Result.success("成功");
     };
+
+
 }

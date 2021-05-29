@@ -13,7 +13,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Arrays;
 import java.util.Date;
 import java.util.Random;
 
@@ -97,8 +96,6 @@ public class SpringbootTest {
 
     @Test
     public void getthisa(){
-        int[] aaa = new int[] {6501,6828,6963,7036,7422,7674,8146,8468,8704,8717,9170,9359,9719,9895,9896,9913,9962,154,293,334,492,1323,1479,1539,1727,1870,1943,2383,2392,2996,3282,3812,3903,4465,4605,4665,4772,4828,5142,5437,5448,5668,5706,5725,6300,6335};
-        minNumberInRotateArray(aaa);
     }
 
 
@@ -109,6 +106,37 @@ public class SpringbootTest {
         Random ran = new Random();
         return (char) (0x4e00 + ran.nextInt(DATA));
     }
+
+    @Test
+    public void getparamname1(){
+        int[] nums = new int[]{5,14,8,23,32,41,2};
+        System.out.println(Arrays.toString(nums));
+
+    }
+
+    public class Main{
+        public int get(int[] row){
+            if (row.length == 0){
+                return 0;
+            } else if (row.length == 1){
+                return row[0];
+            }
+            int temp = 0;
+            for (int i = 0; i < row.length-1; i++) {
+                for (int k = 0; k<(row.length-1)-i;k++){
+                    if (row[k]>row[k+1]){
+                        temp = row[k];
+                        row[k] = row[k+1];
+                        row[k+1] = temp;
+                    }
+
+                }
+            }
+            return row[0];
+        }
+    }
+
+
 
     public int minNumberInRotateArray(int [] array) {
         if (array.length == 0){
