@@ -23,6 +23,43 @@ public class RewardAndPunishmentRequest implements Serializable {
 
     public String rewardPunishmentItems;
 
+    @NotNull(message = "用户ID不能为空")
+    public Integer empId;
+
+    @NotEmpty
+    public String empName;
+
+    @NotEmpty
+    public String deptName;
+
+    @NotNull(message = "部门id不能为空")
+    public Integer deptId;
+
+    @NotEmpty
+    public String positionName;
+
+    @NotNull(message = "职位id不能为空")
+    public Integer positionId;
+
+    @NotNull(message = "职位类型不能为空")
+    public String positionType;
+
+    @SizeJudge(message = "简介不能多于100个字")
+    public String remark;
+
+
+    /**
+     * 0 未生效 1已生效 3已取消
+     */
+    public Boolean status;
+
+    /**
+     * 生效日期
+     */
+    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+    @NotNull(message = "时间不能为null")
+    public Date implementationData;
+
     public int getId() {
         return id;
     }
@@ -135,42 +172,7 @@ public class RewardAndPunishmentRequest implements Serializable {
         this.implementationData = implementationData;
     }
 
-    @NotNull(message = "用户ID不能为空")
-    public Integer empId;
 
-    @NotEmpty
-    public String empName;
-
-    @NotEmpty
-    public String deptName;
-
-    @NotNull(message = "部门id不能为空")
-    public Integer deptId;
-
-    @NotEmpty
-    public String positionName;
-
-    @NotNull(message = "职位id不能为空")
-    public Integer positionId;
-
-    @NotNull(message = "职位类型不能为空")
-    public String positionType;
-
-    @SizeJudge(message = "简介不能多于100个字")
-    public String remark;
-
-
-    /**
-     * 0 未生效 1已生效 3已取消
-     */
-    public Boolean status;
-
-    /**
-     * 生效日期
-     */
-    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
-    @NotNull(message = "时间不能为null")
-    public Date implementationData;
 
 
 }

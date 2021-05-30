@@ -8,6 +8,7 @@ import org.example.vhr.RewardAndPunishment;
 import org.example.vhr.RewardAndPunishmentExample;
 import org.example.vhr.RewardAndPunishmentService;
 import org.example.vhr.controller.ControllerRequest.RewardAndPunishmentRequest;
+import org.example.vhr.controller.config.checkConfig;
 import org.example.vhr.controller.config.enums.RewardAndPunishmentEnum;
 import org.example.vhr.controller.customConfig.SizeJudge;
 import org.example.vhr.controller.until.Global;
@@ -53,6 +54,8 @@ public class RewardAndPunishController {
         if (andPunishmentRequest.getRewardPunishmentType() == null ||andPunishmentRequest.getEmpId() == null || andPunishmentRequest.getImplementationData() == null){
             return Result.error(ResultMsg.CLASS_NOT_FOUND_ERR);
         }
+        //校验参数
+       // checkConfig.doValidator(andPunishmentRequest);
         RewardAndPunishment rewardAndPunishment = new RewardAndPunishment();
         BeanUtils.copyProperties(andPunishmentRequest,rewardAndPunishment);
         rewardAndPunishment.setStatus(RewardAndPunishmentEnum.NO_STATUS.val);

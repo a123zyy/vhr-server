@@ -94,25 +94,12 @@ public class SpringbootTest {
         jwtTokenUtil.getNameFromToken(token);
     }
 
-    @Test
-    public void getthisa(){
-    }
-
-
-
-
     //随机生成汉字
     public char getRandomHan () {
         Random ran = new Random();
         return (char) (0x4e00 + ran.nextInt(DATA));
     }
 
-    @Test
-    public void getparamname1(){
-        int[] nums = new int[]{5,14,8,23,32,41,2};
-        System.out.println(Arrays.toString(nums));
-
-    }
 
     public class Main{
         public int get(int[] row){
