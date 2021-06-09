@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -112,9 +113,13 @@ public class EmpBasicController {
         }
         return Result.success("success");
     }
+    /**
+     * 删除员工 相应的工资表和奖惩表对应也需要删掉
+     * */
     @DeleteMapping("/{id}")
+    @Transactional()
     public Result deleteEmp(@PathVariable int id){
-          return Result.success(employeeService.deleteByPrimaryKey(id));
+        return Result.success(employeeService.deleteByID(id));
     }
 
     @GetMapping("/nations")

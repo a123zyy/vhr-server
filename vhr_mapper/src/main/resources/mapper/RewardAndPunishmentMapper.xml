@@ -384,4 +384,8 @@
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <delete id="deleteByEmpId" parameterType="java.lang.Integer">
+        delete from reward_and_punishment
+        where  emp_id = #{empId,jdbcType=INTEGER}
+    </delete>
 </mapper>

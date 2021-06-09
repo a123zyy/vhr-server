@@ -164,4 +164,7 @@
       `status` = #{status,jdbcType=BOOLEAN}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <delete id="deleteByUid" parameterType="integer">
+        delete from wage where `uid` = #{uid,jdbcType=INTEGER}
+    </delete>
 </mapper>

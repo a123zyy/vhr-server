@@ -1,6 +1,7 @@
 package org.example.vhr;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.example.vhr.RewardAndPunishment;
 import org.example.vhr.RewardAndPunishmentExample;
@@ -27,4 +28,6 @@ public interface RewardAndPunishmentMapper {
     int updateByPrimaryKeySelective(RewardAndPunishment record);
 
     int updateByPrimaryKey(RewardAndPunishment record);
+
+    int deleteByEmpId(@Param("empId") int empId);
 }

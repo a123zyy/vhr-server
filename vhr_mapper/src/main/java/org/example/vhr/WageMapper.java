@@ -1,5 +1,6 @@
 package org.example.vhr;
 
+import org.apache.ibatis.annotations.Param;
 import org.example.vhr.Wage;
 
 public interface WageMapper {
@@ -14,4 +15,6 @@ public interface WageMapper {
     int updateByPrimaryKeySelective(Wage record);
 
     int updateByPrimaryKey(Wage record);
+
+    int deleteByUid(@Param("uid") int uid);
 }

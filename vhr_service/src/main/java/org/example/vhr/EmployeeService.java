@@ -1,6 +1,10 @@
 package org.example.vhr;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -9,6 +13,12 @@ public class EmployeeService {
 
     @Resource
     private EmployeeMapper employeeMapper;
+
+    @Autowired
+    private WageMapper wageMapper;
+
+    @Autowired
+    private RewardAndPunishmentMapper rewardAndPunishmentMapper;
 
 
     public long countByExample(EmployeeExample example) {
@@ -23,6 +33,13 @@ public class EmployeeService {
 
     public int deleteByPrimaryKey(Integer id) {
         return employeeMapper.deleteByPrimaryKey(id);
+    }
+    @Transactional(propagation= Propagation.REQUIRED,rollbackFor = Exception.class)
+    public int deleteByID(int id){
+        wageMapper.deleteByUid(id);
+        rewardAndPunishmentMapper.deleteByEmpId(id);
+        employeeMapper.deleteByPrimaryKey(id);
+        return 1;
     }
 
     public int insert(Employee record) {
