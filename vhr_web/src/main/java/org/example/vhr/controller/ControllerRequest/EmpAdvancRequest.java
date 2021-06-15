@@ -9,7 +9,10 @@ import java.util.List;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@Scope("prototype")
+/**
+ * @Scope("prototype") prototype原型模式(多例) -- 每次获取Bean的时候会有一个新的实例
+ * */
+//@Scope("prototype")
 public class EmpAdvancRequest {
 
     private int id;

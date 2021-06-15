@@ -2,14 +2,9 @@ package org.example.vhr.controller.ControllerRequest;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
-import org.example.vhr.controller.customConfig.SizeJudge;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 import java.util.Date;
 
 
@@ -23,8 +18,6 @@ public class RewardAndPunishmentRequest {
 
     public Boolean rewardPunishmentType;
 
-    @Min(value = 1, message = "年龄有误！")
-    @Max(value = 100, message = "年龄有误！")
     public Double rewardPunishmentPrice;
 
     public String rewardPunishmentItems;
@@ -32,25 +25,20 @@ public class RewardAndPunishmentRequest {
     @NotNull(message = "用户ID不能为空")
     public Integer empId;
 
-    @NotEmpty
     public String empName;
 
-    @NotEmpty
     public String deptName;
 
-    @NotNull(message = "部门id不能为空")
     public Integer deptId;
 
-    @NotEmpty
     public String positionName;
 
-    @NotNull(message = "职位id不能为空")
     public Integer positionId;
 
-    @NotNull(message = "职位类型不能为空")
     public String positionType;
 
-    @SizeJudge(message = "长度不能超于100")
+//    @SizeJudge(message = "长度不能超于100")
+    @Size(message = "长度不能超于100",max = 100)
     public String remark;
 
 

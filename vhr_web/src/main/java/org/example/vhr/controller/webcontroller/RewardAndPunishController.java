@@ -69,7 +69,7 @@ public class RewardAndPunishController {
             return Result.error(ResultMsg.CLASS_NOT_FOUND_ERR);
         }
         //校验参数
-        checkConfig.doValidator(andPunishmentRequest);
+//        checkConfig.doValidator(andPunishmentRequest);
         EmployeeRequest EmployeeRequest =  getEmployeeRequest(andPunishmentRequest.getEmpId());
         andPunishmentRequest.setEmpName(EmployeeRequest.getName());
         andPunishmentRequest.setDeptId(EmployeeRequest.getDepartmentId());
@@ -87,14 +87,14 @@ public class RewardAndPunishController {
 
     @PostMapping("/update")
     @Validated
-    public Result update(@RequestBody @Valid RewardAndPunishmentRequest andPunishmentRequest){
+    public Result update(@RequestBody RewardAndPunishmentRequest andPunishmentRequest){
         if (andPunishmentRequest == null){
             return Result.error(ResultMsg.CLASS_NOT_FOUND_ERR);
         }
         if (andPunishmentRequest.getRewardPunishmentType() == null ||andPunishmentRequest.getEmpId() == null || andPunishmentRequest.getImplementationData() == null){
             return Result.error(ResultMsg.CLASS_NOT_FOUND_ERR);
         }
-        checkConfig.doValidator(andPunishmentRequest);
+//        checkConfig.doValidator(andPunishmentRequest);
         EmployeeRequest EmployeeRequest =  getEmployeeRequest(andPunishmentRequest.getEmpId());
         andPunishmentRequest.setEmpName(EmployeeRequest.getName());
         andPunishmentRequest.setDeptId(EmployeeRequest.getDepartmentId());

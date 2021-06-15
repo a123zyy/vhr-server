@@ -44,7 +44,13 @@ public class SalaryBillController {
     public Result getsobcfg(@RequestBody EmployeeRequest employeeRequest){
         PageHelper.startPage(employeeRequest.getPageNo(),employeeRequest.getPageSize(),true);
         PageInfo<Employee> pageInfo = new PageInfo<Employee>(employeeService.selectByExample( new EmployeeExample()));
-        employeeRequest.setData(pageInfo.getList().stream().map(this::getEmployee).collect(Collectors.toList()));
+        employeeRequest.setData(pageInfo.getList().stream().map(item ->{
+            EmployeeRequest employeeRequests = new  EmployeeRequest();
+            BeanUtils.copyProperties(item,employeeRequest);
+            employeeRequests.setDepartment(departmentService.selectByPrimaryKey(employeeRequests.getDepartmentId()));
+            employeeRequests.setSalary(salaryService.selectByPrimaryKey(empsalaryService.findSIDByEID(employeeRequests.getId())));
+            return employeeRequests;
+        }).collect(Collectors.toList()));
         employeeRequest.setTotal(pageInfo.getTotal());
         return Result.success(employeeRequest);
     }
@@ -57,14 +63,5 @@ public class SalaryBillController {
     @PutMapping("/")
     public Result getInsertUpdate(int eid,int sid){
         return Result.success(empsalaryService.intInsertUpdate(eid,sid));
-
-    }
-
-    private EmployeeRequest getEmployee(Employee employee){
-        EmployeeRequest employeeRequest = new  EmployeeRequest();
-        BeanUtils.copyProperties(employee,employeeRequest);
-        employeeRequest.setDepartment(departmentService.selectByPrimaryKey(employeeRequest.getDepartmentId()));
-        employeeRequest.setSalary(salaryService.selectByPrimaryKey(empsalaryService.findSIDByEID(employeeRequest.getId())));
-        return employeeRequest;
     }
 }

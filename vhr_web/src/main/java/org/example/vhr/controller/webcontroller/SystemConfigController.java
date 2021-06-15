@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * @author zyy
+ */
 @RequestMapping("/system/config")
 @RestController
 @CrossOrigin(origins = "*")
@@ -28,8 +31,12 @@ public class SystemConfigController {
     private MenuService menuService;
 
 
+    /**
+     * 根据id拿到该用户的权限
+     * @param request
+     * @return
+     */
     @GetMapping("/menu")
-    //根据id拿到该用户的权限
     public Result getRoleMenu(HttpServletRequest request){
         Integer hrid = jwtTokenUtil.getUseridFromToken(request.getHeader("token"));
        if(hrid.equals("")){

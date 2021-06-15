@@ -38,13 +38,7 @@ public class EmpAdvancController {
     @Autowired
     private EmployeeService employeeService;
     @Autowired
-    private NationService nationService;
-    @Autowired
-    private PoliticsstatusService politicsstatusService;
-    @Autowired
     private PositionService positionService;
-    @Autowired
-    private JoblevelService joblevelService;
     @Autowired
     private DepartmentService departmentService;
 

@@ -33,13 +33,6 @@ public class EmployeeRequest extends Employee {
   private Salary salary;
 
 
-//  private String birthday;
-//  private String begindate;
-//  private String conversiontime;
-//  private String begincontract;
-//  private String endcontract;
-
-
 
 
 
