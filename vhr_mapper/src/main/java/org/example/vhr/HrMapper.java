@@ -2,10 +2,10 @@ package org.example.vhr;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.example.vhr.Hr;
 import org.example.vhr.HrExample;
-
 public interface HrMapper {
     long countByExample(HrExample example);
 

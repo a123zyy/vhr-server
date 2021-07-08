@@ -1,7 +1,7 @@
 package org.example.vhr;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+//import com.baomidou.mybatisplus.core.metadata.IPage;
+//import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import org.example.vhr.Wage;
@@ -63,9 +63,9 @@ public class WageService {
         return wageMapper.updateByExample(record, example);
     }
 
-    public IPage<Wage> selectPageText(Page<Wage> page,int status) {
-        return wageMapper.selectPageText(page,status);
-    }
+//    public IPage<Wage> selectPageText(Page<Wage> page,int status) {
+//        return wageMapper.selectPageText(page,status);
+//    }
 
 
 

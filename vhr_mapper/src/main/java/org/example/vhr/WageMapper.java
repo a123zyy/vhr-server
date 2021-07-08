@@ -2,8 +2,8 @@ package org.example.vhr;
 
 import java.util.List;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+//import com.baomidou.mybatisplus.core.metadata.IPage;
+//import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Param;
 import org.example.vhr.Wage;
 import org.example.vhr.WageExample;
@@ -33,5 +33,5 @@ public interface WageMapper {
 
     int deleteByUid(@Param("uid") int uid);
 
-    IPage<Wage> selectPageText(Page<Wage> page, @Param("status") int status);
+//    IPage<Wage> selectPageText(Page<Wage> page, @Param("status") int status);
 }

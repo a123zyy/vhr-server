@@ -1,7 +1,7 @@
 package org.example.vhr.controller.webcontroller;
-
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+//
+//import com.baomidou.mybatisplus.core.metadata.IPage;
+//import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.example.vhr.RewardAndPunishment;
@@ -41,20 +41,20 @@ public class WageController {
 
     @GetMapping("/")
     public Result getWageList(int pageSize, int pageNum){
-        Page<Wage> WagePage = new Page<>(pageNum, pageSize);
-        IPage<Wage> iPage = wageService.selectPageText(WagePage, WageEnum.IS_STATUS.val);
-        ResultController resultController = new ResultController();
-        resultController.setList(
-                iPage.getRecords().stream().map(item->{
-                    WageRequest wageRequest = new WageRequest();
-                    BeanUtils.copyProperties(item,wageRequest);
-                    return wageRequest;
-                }).collect(Collectors.toList())
-        );
-        resultController.setPageSize(pageSize);
-        resultController.setTotal(iPage.getTotal());
-        resultController.setPageNo(pageNum);
-        return Result.success(resultController);
+//        Page<Wage> WagePage = new Page<>(pageNum, pageSize);
+//        IPage<Wage> iPage = wageService.selectPageText(WagePage, WageEnum.IS_STATUS.val);
+//        ResultController resultController = new ResultController();
+//        resultController.setList(
+//                iPage.getRecords().stream().map(item->{
+//                    WageRequest wageRequest = new WageRequest();
+//                    BeanUtils.copyProperties(item,wageRequest);
+//                    return wageRequest;
+//                }).collect(Collectors.toList())
+//        );
+//        resultController.setPageSize(pageSize);
+//        resultController.setTotal(iPage.getTotal());
+//        resultController.setPageNo(pageNum);
+        return Result.success("");
     }
 
     @PostMapping("/add")

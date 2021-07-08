@@ -14,6 +14,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @MapperScan("org.example.vhr")
 @EnableCaching
 @EnableScheduling
+
 //@ComponentScan(basePackages = {"org.example.vhr.controller.config"})
 public class Application {
     public static void main(String[] args) {
